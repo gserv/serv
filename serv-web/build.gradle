@@ -1,0 +1,35 @@
+apply plugin: 'maven'
+
+// jar包的名字
+archivesBaseName = 'serv-web'
+
+eclipse {
+	project {
+		name = 'serv-web'
+	}
+}
+
+
+dependencies {
+
+    compile (
+        project(':serv-commons'),
+		
+		libraries.'servlet-api',
+		libraries.'ehcache',
+		
+		// shiro
+		libraries.'shiro-core',
+		libraries.'shiro-web',
+		libraries.'shiro-spring',
+		libraries.'shiro-quartz',
+		libraries.'jcaptcha',
+		libraries.'jcaptcha-api',
+
+	)
+
+	runtime (
+	)
+}
+
+

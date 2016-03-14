@@ -1,0 +1,10 @@
+rootProject.name = 'serv'
+
+// 基础工具
+include 'serv-commons'
+
+// WEB增强
+include 'serv-web'
+
+// 微信服务支持
+include 'serv-wx'

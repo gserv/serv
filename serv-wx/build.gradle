@@ -1,0 +1,30 @@
+apply plugin: 'maven'
+
+// jar包的名字
+archivesBaseName = 'serv-wx'
+
+eclipse {
+	project {
+		name = 'serv-wx'
+	}
+}
+
+
+dependencies {
+
+    compile (
+        project(':serv-commons'),
+		
+		libraries.'servlet-api',
+
+		// wx
+		libraries.'guava',
+		libraries.'ehcache',
+
+	)
+
+	runtime (
+	)
+}
+
+

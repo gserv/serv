@@ -1,0 +1,34 @@
+apply plugin: 'maven'
+
+// jar包的名字
+archivesBaseName = 'serv-commons'
+
+eclipse {
+	project {
+		name = 'serv-commons'
+	}
+}
+
+
+dependencies {
+
+    compile (
+			libraries.'servlet-api',
+
+			// mail
+			libraries.'spring-context-support',
+			libraries.'spring-webmvc',
+			libraries.'mail',
+			libraries.'freemarker',
+
+			// export
+			libraries.'poi',
+			libraries.'poi-ooxml',
+
+	)
+
+	runtime (
+	)
+}
+
+

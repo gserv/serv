@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache>
+
+	<!--
+    <diskStore path="java.io.tmpdir"/>
+  	-->
+    <diskStore path="d:/tmpdir"/>
+    
+    <defaultCache
+            maxElementsInMemory="10000"
+            eternal="false"
+            timeToIdleSeconds="120"
+            timeToLiveSeconds="120"
+            overflowToDisk="false"
+            diskSpoolBufferSizeMB="30"
+            maxElementsOnDisk="10000000"
+            diskPersistent="false"
+            diskExpiryThreadIntervalSeconds="120"
+            memoryStoreEvictionPolicy="LRU" 
+            />
+	
+	<cache name="serviceCache" timeToIdleSeconds="10" timeToLiveSeconds="10" >
+	</cache>
+	
+	<cache name="serviceCache_longer" eternal="false" timeToIdleSeconds="30" timeToLiveSeconds="30"
+            diskPersistent="false" >
+	</cache>
+	<cache name="shiro-activeSessionCache" timeToIdleSeconds="30" timeToLiveSeconds="30" >
+	</cache>
+	
+	<!-- 
+	<cacheManagerPeerProviderFactory
+        class="net.sf.ehcache.distribution.RMICacheManagerPeerProviderFactory"
+        properties="peerDiscovery=automatic, multicastGroupAddress=230.0.0.1, multicastGroupPort=4446,timeToLive=255"/>
+	<cacheManagerPeerListenerFactory
+         class="net.sf.ehcache.distribution.RMICacheManagerPeerListenerFactory" />
+    -->
+
+</ehcache>
