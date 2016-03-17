@@ -52,10 +52,11 @@ public class JsonUtils {
 	 * @param c
 	 * @return
 	 */
+	@SuppressWarnings("unchecked")
 	public static <T> T parseJson(String json, Class<T> c, Class<?>... parametricType) {
 		try {
 			ObjectMapper mapper = getObjectMapper();
-			JavaType type = mapper.getTypeFactory().constructParametricType(c, parametricType);
+			JavaType type = mapper.getTypeFactory().constructParametrizedType(c, c, parametricType);
 			return (T) mapper.readValue(json, type);
 		} catch (Exception e) {
 			e.printStackTrace();

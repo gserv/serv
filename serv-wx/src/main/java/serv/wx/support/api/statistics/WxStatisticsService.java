@@ -170,6 +170,7 @@ public class WxStatisticsService implements WxService {
 				JsonUtils.toJson(JsonUtils.parseJsonMap(res_getusersummary).get("list")), 
 				List.class, StatisticsUserCumulate.class);
 		if (list == null) {
+			@SuppressWarnings("rawtypes")
 			Map obj = JsonUtils.parseJsonMap(res_getusersummary);
 			if (obj.get("errcode") != null && obj.get("errcode") instanceof Integer) {
 				throw new WxApiInvorkException((Integer) obj.get("errcode"), (String) obj.get("errmsg"));

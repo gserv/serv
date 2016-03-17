@@ -1,13 +1,16 @@
-apply plugin: 'maven'
 
-// jar包的名字
-archivesBaseName = 'serv-web'
 
-eclipse {
-	project {
-		name = 'serv-web'
-	}
-}
+////////////////////////////////////////
+// generator facets
+
+apply plugin: 'idea'
+ext_facets['idea_facets_web'](this)
+
+apply plugin: 'war'
+apply plugin: 'eclipse-wtp'
+ext_facets['eclipse_facets_web'](this)
+
+////////////////////////////////////////
 
 
 dependencies {

@@ -1,13 +1,14 @@
-apply plugin: 'maven'
 
-// jar包的名字
-archivesBaseName = 'serv-commons'
+////////////////////////////////////////
+// generator facets
 
-eclipse {
-	project {
-		name = 'serv-commons'
-	}
-}
+apply plugin: 'idea'
+ext_facets['idea_facets_java'](this)
+
+apply plugin: 'eclipse'
+ext_facets['eclipse_facets_java'](this)
+
+////////////////////////////////////////
 
 
 dependencies {

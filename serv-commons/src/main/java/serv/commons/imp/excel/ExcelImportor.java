@@ -44,7 +44,8 @@ public class ExcelImportor {
     public void excelImport(File excel, TreatAction action) {
         //
         try {
-            Workbook workbook = new XSSFWorkbook(new FileInputStream(excel));
+            @SuppressWarnings("resource")
+			Workbook workbook = new XSSFWorkbook(new FileInputStream(excel));
             for (int sheetIndex=0; sheetIndex<workbook.getNumberOfSheets(); sheetIndex++) {
             	excelImport(excel, sheetIndex, action);
             }
@@ -55,10 +56,12 @@ public class ExcelImportor {
     	
     }
 
-    public void excelImport(File excel, int sheetIndex, TreatAction action) {
+    @SuppressWarnings("unchecked")
+	public void excelImport(File excel, int sheetIndex, TreatAction action) {
         //
         try {
-            Workbook workbook = new XSSFWorkbook(new FileInputStream(excel));
+            @SuppressWarnings("resource")
+			Workbook workbook = new XSSFWorkbook(new FileInputStream(excel));
             Sheet sheet = workbook.getSheetAt(sheetIndex);
             // 创建临时保存表
             List<List<Object>> tmpList = new ArrayList<List<Object>>();
@@ -70,7 +73,8 @@ public class ExcelImportor {
             for (int r = sheet.getFirstRowNum()+1; r <= sheet.getLastRowNum(); r++) {
                 Row row = sheet.getRow(r);
                 //
-                List lineTmpList = new ArrayList();     // 行数据暂存表
+                @SuppressWarnings("rawtypes")
+				List lineTmpList = new ArrayList();     // 行数据暂存表
                 //
                 for (int c = 0; c < row.getLastCellNum(); c++) {
                     Cell cell = row.getCell(c);
@@ -109,7 +113,7 @@ public class ExcelImportor {
                 if (needEndLine) {
                     // 发送通知并清空数组
                     sendTreatNotice(sheetIndex, sheet.getSheetName(), action, tmpList);
-                    for (List l : tmpList) {
+                    for (@SuppressWarnings("rawtypes") List l : tmpList) {
                         l.clear();
                     }
                 }
@@ -128,7 +132,8 @@ public class ExcelImportor {
     }
 
 
-    private void sendTreatNotice(int sheetIndex, String sheetName, TreatAction action, List<List<Object>> list) {
+    @SuppressWarnings({ "rawtypes", "unchecked" })
+	private void sendTreatNotice(int sheetIndex, String sheetName, TreatAction action, List<List<Object>> list) {
         // 发送通知并清空数组
         List<Object> nlist = new ArrayList<Object>();
         for (int en = 0; en < expression.size(); en++) {

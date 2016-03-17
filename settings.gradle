@@ -8,3 +8,4 @@ include 'serv-web'
 
 // 微信服务支持
 include 'serv-wx'
+include 'serv-wx-example'

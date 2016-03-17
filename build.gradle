@@ -142,7 +142,9 @@ apply plugin: 'war'
 // 引入jar包定义
 // 这个文件中定义的jar包可以直接在子项目中使用，不需要再次使用 apply from 这个语句
 //
-apply from: 'dependency.gradle'
+apply from: 'gradle/dependency.gradle'
+
+apply from: 'gradle/facet.gradle'
 
 
 
@@ -168,8 +170,9 @@ subprojects { subproj ->
 
     repositories {
         mavenCentral()
-        // maven {url "http://maven.oschina.net/content/groups/public/"}
+		maven {url "http://maven.oschina.net/content/groups/public/"}
         maven {url "http://repos.someok.com/release"}
+		maven {url "http://repository.atlassian.com/maven2"}
     }
 
     jar {
@@ -220,10 +223,8 @@ subprojects { subproj ->
 
         deployerJars
 
-        //
         // 所有需要忽略的包定义在此
-        //
-       // all*.exclude group: "javax.servlet", module: "servlet-api"
+		all*.exclude group: "javax.servlet", module: "jsp-api"
     }
 
     dependencies {
@@ -353,4 +354,7 @@ idea {
         vcs = 'Git'
     }
 }
+
+
+
 

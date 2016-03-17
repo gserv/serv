@@ -46,7 +46,7 @@ public class EhcacheImpl implements Cache {
 		if (element == null) {
 			return null;
 		}
-		return (T) element.getValue();
+		return (T) element.getObjectValue();
 	}
 
 	@Override

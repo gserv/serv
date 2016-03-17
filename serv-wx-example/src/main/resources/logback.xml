@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+	configuration为根元素，包含三个属性:
+	debug,指是否开启logback内部日志，没有设置此属性或设置其值为空、null或false时，表示不开启，否则，开启；
+	scan,设置是否定时扫描配置文件
+	scanPeriod,设置扫描周期，与scan属性配合使用，默认是60000毫秒，如果该属性值没有带单位，则单位为毫秒，可带的单位有milli/millisecond/second/seconde/minute/hour/day，可忽略大小写
+-->
+<configuration debug="true" scan="true" scanPeriod="600 seconds">
+	
+	<!--日志文件的保存路径,首先查找系统属性-Dlog.dir,如果存在就使用其；否则，在当前目录下创建名为logs目录做日志存放的目录 -->
+	<property name="LOG_HOME" value="${log.dir}" />
+	<!-- 日志输出格式 -->
+	<property name="ENCODER_PATTERN"
+		value="timestamp[%d{yyyy-MM-dd HH:mm:ss.SSS}] msg[%msg] contextName[%contextName] thread[%thread] logger[%logger] sessionkey[%X{sessionkey}] clientip[%X{clientip}] caller[%replace(%caller{1}){'\r\n', ''}] endline!%n" />
+		
+	<contextName>${APP_NAME}</contextName>
+
+	<!-- 下面appender表示输出到控制台 -->
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<!-- encoder指定编码格式，并根据指定的pattern输出日志信息 -->
+		<encoder charset="UTF-8">
+			<!-- pattern指定日志的输出格式 -->
+			<pattern>[%level][%logger][%d{yyyy-MM-dd HH:mm:ss.SSS}] %msg %n</pattern>
+		</encoder>
+	</appender>
+	
+	<root>
+		<level value="DEBUG" />
+		<appender-ref ref="STDOUT" />
+	</root>
+	
+	
+	<logger name="com.alibaba.dubbo" level="FAILD" />
+	<logger name="org.apache.http" level="WARN" />  
+	<logger name="com.alibaba.dubbo" level="WARN" />  
+	<logger name="net.sf" level="ERROR" />  
+	<logger name="org.mybatis" level="ERROR" />  
+	<logger name="org.apache.commons.beanutils" level="ERROR" />  
+	<logger name="net.sf.ehcache" level="ERROR" />  
+	<logger name="com.octo.captcha" level="ERROR" />
+	<logger name="org.apache.shiro" level="ERROR" />
+	<logger name="org.springframework" level="ERROR" />
+	
+	
+</configuration>
+
+
+
+
+
+
+
+
+

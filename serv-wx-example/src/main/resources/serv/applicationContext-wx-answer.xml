@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans 
+  xmlns="http://www.springframework.org/schema/beans" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:util="http://www.springframework.org/schema/util"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+    http://www.springframework.org/schema/util 
+    http://www.springframework.org/schema/util/spring-util-2.0.xsd" >
+	
+	
+	<!-- 应答处理器 -->
+	<bean id="defaultWxMessageHandler" class="serv.wx.support.handler.DefaultWxMessageHandler" >
+		<property name="useExpression" value="true" />
+		<property name="messageMap" >
+			<util:map map-class="java.util.LinkedHashMap" >
+				<entry key="[msgType=text][content^=hello]" >
+					<bean class="serv.wx.message.send.SendTextMessage" >
+						<property name="content" value="this is a text message." ></property>
+					</bean>
+				</entry>
+			</util:map>
+		</property>
+	</bean>
+	
+	
+	<!-- 处理器链 -->
+	<bean id="wxMessageHandlerChain" class="serv.wx.support.handler.WxMessageChainHandler" >
+		<property name="handlerList" >
+			<list>
+				<!-- 群发消息受理处理器
+				<bean class="caituo.sxUnicomElect.service.wx.WxPushStatusRevcMessageHandler" >
+				</bean> -->
+				<!-- 默认的消息应答处理器 -->
+				<ref bean="defaultWxMessageHandler" />
+			</list>
+		</property>
+	</bean>
+	
+	
+	
+    
+</beans>
+
+
+
+
+
+
+
+

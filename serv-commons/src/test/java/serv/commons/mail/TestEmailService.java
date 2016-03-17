@@ -20,6 +20,8 @@ import serv.commons.mail.EmailService.EmailNoticeAction;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "/serv/commons/mail/applicationContext-email.xml")
 public class TestEmailService {
+	
+	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(TestEmailService.class);
 	
 	@Resource
@@ -29,6 +31,7 @@ public class TestEmailService {
 	public void test() {
 		emailService.sendMessage("350106052@qq.com", "测试邮件", "testMail", new EmailNoticeAction() {
 			
+			@SuppressWarnings({ "unchecked", "rawtypes" })
 			@Override
 			public void setData(Map model) {
 				model.put("name", "名称");

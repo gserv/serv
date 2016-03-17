@@ -1,5 +1,133 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactManager">
+    <artifact type="exploded-war" build-on-make="true" name="serv-web">
+      <output-path>$PROJECT_DIR$/out/serv-web</output-path>
+      <root id="root">
+        <element id="directory" name="WEB-INF">
+          <element id="directory" name="classes">
+            <element id="module-output" name="serv-commons" />
+            <element id="module-output" name="serv-web" />
+          </element>
+          <element id="directory" name="lib">
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\ch.qos.logback\logback-classic\1.0.13\6b56ec752b42ccfa1415c0361fb54b1ed7ca3db6\logback-classic-1.0.13.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\org.slf4j\jcl-over-slf4j\1.7.7\56003dcd0a31deea6391b9e2ef2f2dc90b205a92\jcl-over-slf4j-1.7.7.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\org.slf4j\log4j-over-slf4j\1.7.7\d521cb26a9c4407caafcec302e7804b048b07cea\log4j-over-slf4j-1.7.7.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\commons-io\commons-io\2.4\b1b6ea3b7e4aa4f492509a4952029cd8e48019ad\commons-io-2.4.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\commons-configuration\commons-configuration\1.10\2b36e4adfb66d966c5aef2d73deb6be716389dc9\commons-configuration-1.10.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\org.apache.commons\commons-lang3\3.4\5fe28b9518e58819180a43a850fbc0dd24b7c050\commons-lang3-3.4.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\commons-beanutils\commons-beanutils\1.9.1\d2662a4e018671ed061e9acca6299a31b7652f3c\commons-beanutils-1.9.1.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\dom4j\dom4j\1.6.1\5d3ccc056b6f056dbf0dddfdf43894b9065a8f94\dom4j-1.6.1.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\org.apache.httpcomponents\httpclient\4.5\a1e6cbb3cc2c5f210dd1310ff9fcb2c09c0d1438\httpclient-4.5.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\org.apache.httpcomponents\httpmime\4.5\7bdb321e86724b16af6134a0fd22fec649eda971\httpmime-4.5.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\com.fasterxml.jackson.core\jackson-core\2.6.1\892d15011456ea3563319b27bdd612dbc89bb776\jackson-core-2.6.1.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\com.fasterxml.jackson.core\jackson-databind\2.6.1\45c37a03be19f3e0db825fd7814d0bbec40b9e0\jackson-databind-2.6.1.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\com.fasterxml.jackson.core\jackson-annotations\2.6.1\f9661ddd2456d523b9428651c61e34b4ebf79f4e\jackson-annotations-2.6.1.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\org.springframework\spring-context\4.0.7.RELEASE\8a4aa735f3691a1985381b3c6c69d32b835f51b4\spring-context-4.0.7.RELEASE.jar" />
+            <element id="file-copy" path="E:\git\serv\serv-commons\build\libs\serv-commons-1.0.0.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\javax.servlet\javax.servlet-api\3.1.0\3cd63d075497751784b2fa84be59432f4905bf7c\javax.servlet-api-3.1.0.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\net.sf.ehcache\ehcache\2.10.1\a507a1302b631d0718fe29ae95d4e52e646ecc5a\ehcache-2.10.1.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\org.apache.shiro\shiro-core\1.2.3\4ddf1b83360c7e39f02e3e20ca364d2c448ed01f\shiro-core-1.2.3.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\org.apache.shiro\shiro-web\1.2.3\4dbcac122a883c29d32fe94f6b1525e5a81884ec\shiro-web-1.2.3.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\org.apache.shiro\shiro-spring\1.2.3\1e1cce0a92ce3612967de861a2a94e01e47faa73\shiro-spring-1.2.3.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\org.apache.shiro\shiro-quartz\1.2.3\6d478e45f9f6b53987eadfa82e63f924bef2d969\shiro-quartz-1.2.3.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\com.octo.captcha\jcaptcha\1.0\fc28c75b6e4ab3c50fadc7503defc50886c4dfa\jcaptcha-1.0.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\com.octo.captcha\jcaptcha-api\1.0\ff18fc63ff3871f11f5d59d929630c34ea793069\jcaptcha-api-1.0.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\org.springframework\spring-jdbc\4.0.7.RELEASE\2fe5d0596549795c343226e2f387a292280dd1ff\spring-jdbc-4.0.7.RELEASE.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\org.springframework\spring-core\4.0.7.RELEASE\777e9502c4c2de150918a746fa22734d3eff81e0\spring-core-4.0.7.RELEASE.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\ch.qos.logback\logback-core\1.0.13\dc6e6ce937347bd4d990fc89f4ceb469db53e45e\logback-core-1.0.13.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\commons-lang\commons-lang\2.6\ce1edb914c94ebc388f086c6827e8bdeec71ac2\commons-lang-2.6.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\xml-apis\xml-apis\1.0.b2\3136ca936f64c9d68529f048c2618bd356bf85c9\xml-apis-1.0.b2.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\org.apache.httpcomponents\httpcore\4.4.1\f5aa318bda4c6c8d688c9d00b90681dcd82ce636\httpcore-4.4.1.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\commons-codec\commons-codec\1.9\9ce04e34240f674bc72680f8b843b1457383161a\commons-codec-1.9.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\org.springframework\spring-aop\4.0.7.RELEASE\caadec5dc4ea4899d89004ff46053f8e391e0343\spring-aop-4.0.7.RELEASE.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\org.springframework\spring-beans\4.0.7.RELEASE\fdd041f086972cc16f9b09ee420a98604cd0bc07\spring-beans-4.0.7.RELEASE.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\org.springframework\spring-expression\4.0.7.RELEASE\46a4cfe181b1f15940b5ea7530fcad1f8b98c561\spring-expression-4.0.7.RELEASE.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\org.springframework\spring-context-support\4.0.7.RELEASE\d28f4dfc2ea3f8be8cecc299f1c44e1578804915\spring-context-support-4.0.7.RELEASE.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\org.springframework\spring-webmvc\4.0.7.RELEASE\5d2de0ccee1d6cc02ec2d29c5440a762fd4345f6\spring-webmvc-4.0.7.RELEASE.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\javax.mail\mail\1.4.7\9add058589d5d85adeb625859bf2c5eeaaedf12d\mail-1.4.7.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\org.freemarker\freemarker\2.3.23\cd143cd8c02a9f838e3cb75a6dfe133750437f6d\freemarker-2.3.23.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\org.apache.poi\poi\3.13\f59f504ba8c521e61e25f417ec652fd485010f3\poi-3.13.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\org.apache.poi\poi-ooxml\3.13\c364a8f5422d613e3a56db3b4b889f2989d7ee73\poi-ooxml-3.13.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\org.opensymphony.quartz\quartz\1.6.1\41c8f042d49c65a5889e3fd8b9598e7cfca02c5e\quartz-1.6.1.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\com.jhlabs\imaging\01012005\a56c8146f654e4473c6ff1b12b22dd51bcef81ca\imaging-01012005.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\javax.servlet\servlet-api\2.3\137a24e9f62973f01f16dd23fc1b5a9964fd9ef\servlet-api-2.3.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\org.springframework\spring-tx\4.0.7.RELEASE\756d9d0451804e534820ce7c0d1c7de75583685\spring-tx-4.0.7.RELEASE.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\aopalliance\aopalliance\1.0\235ba8b489512805ac13a8f9ea77a1ca5ebe3e8\aopalliance-1.0.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\org.springframework\spring-web\4.0.7.RELEASE\9c8505b6785bfe6b45bbdc8c8cbcda628feb21b1\spring-web-4.0.7.RELEASE.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\javax.activation\activation\1.1\e6cb541461c2834bdea3eb920f1884d1eb508b50\activation-1.1.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\org.apache.poi\poi-ooxml-schemas\3.13\56fb0b9f3ffc3d7f7fc9b59e17b5fa2c3ab921e7\poi-ooxml-schemas-3.13.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\org.apache.xmlbeans\xmlbeans\2.6.0\29e80d2dd51f9dcdef8f9ffaee0d4dc1c9bbfc87\xmlbeans-2.6.0.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\stax\stax-api\1.0.1\49c100caf72d658aca8e58bd74a4ba90fa2b0d70\stax-api-1.0.1.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\org.slf4j\slf4j-api\1.7.7\2b8019b6249bb05d81d3a3094e468753e2b21311\slf4j-api-1.7.7.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\commons-collections\commons-collections\3.2.1\761ea405b9b37ced573d2df0d1e3a4e0f9edc668\commons-collections-3.2.1.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\commons-logging\commons-logging\1.2\4bfc12adfe4842bf07b657f0369c4cb522955686\commons-logging-1.2.jar" />
+          </element>
+        </element>
+        <element id="dir-copy" path="$PROJECT_DIR$/serv-web/src/main/webapp" />
+      </root>
+    </artifact>
+    <artifact type="exploded-war" build-on-make="true" name="serv-wx-example">
+      <output-path>$PROJECT_DIR$/out/serv-wx-example</output-path>
+      <root id="root">
+        <element id="directory" name="WEB-INF">
+          <element id="directory" name="classes">
+            <element id="module-output" name="serv-wx" />
+            <element id="module-output" name="serv-commons" />
+            <element id="module-output" name="serv-wx-example" />
+          </element>
+          <element id="directory" name="lib">
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\ch.qos.logback\logback-classic\1.0.13\6b56ec752b42ccfa1415c0361fb54b1ed7ca3db6\logback-classic-1.0.13.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\org.slf4j\jcl-over-slf4j\1.7.7\56003dcd0a31deea6391b9e2ef2f2dc90b205a92\jcl-over-slf4j-1.7.7.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\org.slf4j\log4j-over-slf4j\1.7.7\d521cb26a9c4407caafcec302e7804b048b07cea\log4j-over-slf4j-1.7.7.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\commons-io\commons-io\2.4\b1b6ea3b7e4aa4f492509a4952029cd8e48019ad\commons-io-2.4.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\commons-configuration\commons-configuration\1.10\2b36e4adfb66d966c5aef2d73deb6be716389dc9\commons-configuration-1.10.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\org.apache.commons\commons-lang3\3.4\5fe28b9518e58819180a43a850fbc0dd24b7c050\commons-lang3-3.4.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\commons-beanutils\commons-beanutils\1.9.1\d2662a4e018671ed061e9acca6299a31b7652f3c\commons-beanutils-1.9.1.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\dom4j\dom4j\1.6.1\5d3ccc056b6f056dbf0dddfdf43894b9065a8f94\dom4j-1.6.1.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\org.apache.httpcomponents\httpclient\4.5\a1e6cbb3cc2c5f210dd1310ff9fcb2c09c0d1438\httpclient-4.5.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\org.apache.httpcomponents\httpmime\4.5\7bdb321e86724b16af6134a0fd22fec649eda971\httpmime-4.5.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\com.fasterxml.jackson.core\jackson-core\2.6.1\892d15011456ea3563319b27bdd612dbc89bb776\jackson-core-2.6.1.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\com.fasterxml.jackson.core\jackson-databind\2.6.1\45c37a03be19f3e0db825fd7814d0bbec40b9e0\jackson-databind-2.6.1.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\com.fasterxml.jackson.core\jackson-annotations\2.6.1\f9661ddd2456d523b9428651c61e34b4ebf79f4e\jackson-annotations-2.6.1.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\org.springframework\spring-context\4.0.7.RELEASE\8a4aa735f3691a1985381b3c6c69d32b835f51b4\spring-context-4.0.7.RELEASE.jar" />
+            <element id="file-copy" path="E:\git\serv\serv-wx\build\libs\serv-wx-1.0.0.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\javax.servlet\javax.servlet-api\3.1.0\3cd63d075497751784b2fa84be59432f4905bf7c\javax.servlet-api-3.1.0.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\org.springframework\spring-jdbc\4.0.7.RELEASE\2fe5d0596549795c343226e2f387a292280dd1ff\spring-jdbc-4.0.7.RELEASE.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\org.springframework\spring-core\4.0.7.RELEASE\777e9502c4c2de150918a746fa22734d3eff81e0\spring-core-4.0.7.RELEASE.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\org.springframework\spring-beans\4.0.7.RELEASE\fdd041f086972cc16f9b09ee420a98604cd0bc07\spring-beans-4.0.7.RELEASE.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\org.springframework\spring-web\4.0.7.RELEASE\9c8505b6785bfe6b45bbdc8c8cbcda628feb21b1\spring-web-4.0.7.RELEASE.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\org.springframework\spring-webmvc\4.0.7.RELEASE\5d2de0ccee1d6cc02ec2d29c5440a762fd4345f6\spring-webmvc-4.0.7.RELEASE.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\ch.qos.logback\logback-core\1.0.13\dc6e6ce937347bd4d990fc89f4ceb469db53e45e\logback-core-1.0.13.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\commons-lang\commons-lang\2.6\ce1edb914c94ebc388f086c6827e8bdeec71ac2\commons-lang-2.6.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\xml-apis\xml-apis\1.0.b2\3136ca936f64c9d68529f048c2618bd356bf85c9\xml-apis-1.0.b2.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\org.apache.httpcomponents\httpcore\4.4.1\f5aa318bda4c6c8d688c9d00b90681dcd82ce636\httpcore-4.4.1.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\commons-codec\commons-codec\1.9\9ce04e34240f674bc72680f8b843b1457383161a\commons-codec-1.9.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\org.springframework\spring-aop\4.0.7.RELEASE\caadec5dc4ea4899d89004ff46053f8e391e0343\spring-aop-4.0.7.RELEASE.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\org.springframework\spring-expression\4.0.7.RELEASE\46a4cfe181b1f15940b5ea7530fcad1f8b98c561\spring-expression-4.0.7.RELEASE.jar" />
+            <element id="file-copy" path="E:\git\serv\serv-commons\build\libs\serv-commons-1.0.0.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\com.google.guava\guava\18.0\cce0823396aa693798f8882e64213b1772032b09\guava-18.0.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\net.sf.ehcache\ehcache\2.10.1\a507a1302b631d0718fe29ae95d4e52e646ecc5a\ehcache-2.10.1.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\org.springframework\spring-tx\4.0.7.RELEASE\756d9d0451804e534820ce7c0d1c7de75583685\spring-tx-4.0.7.RELEASE.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\aopalliance\aopalliance\1.0\235ba8b489512805ac13a8f9ea77a1ca5ebe3e8\aopalliance-1.0.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\org.springframework\spring-context-support\4.0.7.RELEASE\d28f4dfc2ea3f8be8cecc299f1c44e1578804915\spring-context-support-4.0.7.RELEASE.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\javax.mail\mail\1.4.7\9add058589d5d85adeb625859bf2c5eeaaedf12d\mail-1.4.7.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\org.freemarker\freemarker\2.3.23\cd143cd8c02a9f838e3cb75a6dfe133750437f6d\freemarker-2.3.23.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\org.apache.poi\poi\3.13\f59f504ba8c521e61e25f417ec652fd485010f3\poi-3.13.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\org.apache.poi\poi-ooxml\3.13\c364a8f5422d613e3a56db3b4b889f2989d7ee73\poi-ooxml-3.13.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\javax.activation\activation\1.1\e6cb541461c2834bdea3eb920f1884d1eb508b50\activation-1.1.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\org.apache.poi\poi-ooxml-schemas\3.13\56fb0b9f3ffc3d7f7fc9b59e17b5fa2c3ab921e7\poi-ooxml-schemas-3.13.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\org.apache.xmlbeans\xmlbeans\2.6.0\29e80d2dd51f9dcdef8f9ffaee0d4dc1c9bbfc87\xmlbeans-2.6.0.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\stax\stax-api\1.0.1\49c100caf72d658aca8e58bd74a4ba90fa2b0d70\stax-api-1.0.1.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\org.slf4j\slf4j-api\1.7.7\2b8019b6249bb05d81d3a3094e468753e2b21311\slf4j-api-1.7.7.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\commons-collections\commons-collections\3.2.1\761ea405b9b37ced573d2df0d1e3a4e0f9edc668\commons-collections-3.2.1.jar" />
+            <element id="file-copy" path="C:\Users\shiying\.gradle\caches\modules-2\files-2.1\commons-logging\commons-logging\1.2\4bfc12adfe4842bf07b657f0369c4cb522955686\commons-logging-1.2.jar" />
+          </element>
+        </element>
+        <element id="dir-copy" path="$PROJECT_DIR$/serv-wx-example/src/main/webapp" />
+      </root>
+    </artifact>
+  </component>
   <component name="CompilerConfiguration">
     <option name="DEFAULT_COMPILER" value="Javac" />
     <resourceExtensions>
@@ -11,7 +139,7 @@
       <entry name="!?*.groovy" />
     </wildcardResourcePatterns>
     <annotationProcessing>
-      <profile default="true" name="Default" enabled="false">
+      <profile default="true" name="Default" enabled="true">
         <processorPath useClasspath="true" />
       </profile>
     </annotationProcessing>
@@ -23,33 +151,6 @@
   </component>
   <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false">
     <file url="PROJECT" charset="UTF-8" />
-  </component>
-  <component name="EntryPointsManager">
-    <entry_points version="2.0" />
-  </component>
-  <component name="GradleSettings">
-    <option name="linkedExternalProjectsSettings">
-      <GradleProjectSettings>
-        <option name="distributionType" value="LOCAL" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="gradleHome" value="D:/evn/gradle" />
-        <option name="gradleJvm" value="#JAVA_HOME" />
-        <option name="modules">
-          <set>
-            <option value="$PROJECT_DIR$/serv-commons" />
-            <option value="$PROJECT_DIR$/serv-web" />
-            <option value="$PROJECT_DIR$/serv-wx" />
-          </set>
-        </option>
-        <option name="myModules">
-          <set>
-            <option value="$PROJECT_DIR$/serv-commons" />
-            <option value="$PROJECT_DIR$/serv-web" />
-            <option value="$PROJECT_DIR$/serv-wx" />
-          </set>
-        </option>
-      </GradleProjectSettings>
-    </option>
   </component>
   <component name="GradleUISettings">
     <setting name="root" />
@@ -80,492 +181,16 @@
       <module fileurl="file://$PROJECT_DIR$/serv-commons/serv-commons.iml" filepath="$PROJECT_DIR$/serv-commons/serv-commons.iml" />
       <module fileurl="file://$PROJECT_DIR$/serv-web/serv-web.iml" filepath="$PROJECT_DIR$/serv-web/serv-web.iml" />
       <module fileurl="file://$PROJECT_DIR$/serv-wx/serv-wx.iml" filepath="$PROJECT_DIR$/serv-wx/serv-wx.iml" />
+      <module fileurl="file://$PROJECT_DIR$/serv-wx-example/serv-wx-example.iml" filepath="$PROJECT_DIR$/serv-wx-example/serv-wx-example.iml" />
     </modules>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_6" assert-keyword="true" jdk-15="true" project-jdk-name="1.7" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_7" assert-keyword="true" jdk-15="true" project-jdk-name="1.7" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
   <component name="SvnBranchConfigurationManager">
     <option name="mySupportsUserInfoFilter" value="true" />
   </component>
   <component name="VcsDirectoryMappings">
-    <mapping directory="" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$" vcs="Git" />
-  </component>
-  <component name="libraryTable">
-    <library name="Gradle: aopalliance:aopalliance:1.0">
-      <CLASSES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/aopalliance/aopalliance/1.0/235ba8b489512805ac13a8f9ea77a1ca5ebe3e8/aopalliance-1.0.jar!/" />
-      </CLASSES>
-      <JAVADOC />
-      <SOURCES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/aopalliance/aopalliance/1.0/4a4b6d692e17846a9f3da036438a7ac491d3c814/aopalliance-1.0-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Gradle: ch.qos.logback:logback-classic:1.0.13">
-      <CLASSES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/ch.qos.logback/logback-classic/1.0.13/6b56ec752b42ccfa1415c0361fb54b1ed7ca3db6/logback-classic-1.0.13.jar!/" />
-      </CLASSES>
-      <JAVADOC />
-      <SOURCES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/ch.qos.logback/logback-classic/1.0.13/63fcf702193934c1aa1ea606093f75ac08b283ee/logback-classic-1.0.13-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Gradle: ch.qos.logback:logback-core:1.0.13">
-      <CLASSES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/ch.qos.logback/logback-core/1.0.13/dc6e6ce937347bd4d990fc89f4ceb469db53e45e/logback-core-1.0.13.jar!/" />
-      </CLASSES>
-      <JAVADOC />
-      <SOURCES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/ch.qos.logback/logback-core/1.0.13/c353276a7cee7e2271c4a4115f1d2948ff5adb0a/logback-core-1.0.13-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Gradle: com.fasterxml.jackson.core:jackson-annotations:2.6.1">
-      <CLASSES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-annotations/2.6.1/f9661ddd2456d523b9428651c61e34b4ebf79f4e/jackson-annotations-2.6.1.jar!/" />
-      </CLASSES>
-      <JAVADOC />
-      <SOURCES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-annotations/2.6.1/4081928da698dc7e6a797485839b5b699d40eec4/jackson-annotations-2.6.1-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Gradle: com.fasterxml.jackson.core:jackson-core:2.6.1">
-      <CLASSES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-core/2.6.1/892d15011456ea3563319b27bdd612dbc89bb776/jackson-core-2.6.1.jar!/" />
-      </CLASSES>
-      <JAVADOC />
-      <SOURCES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-core/2.6.1/c0063bb450c53bfa3136dc868e1062d714187e2/jackson-core-2.6.1-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Gradle: com.fasterxml.jackson.core:jackson-databind:2.6.1">
-      <CLASSES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-databind/2.6.1/45c37a03be19f3e0db825fd7814d0bbec40b9e0/jackson-databind-2.6.1.jar!/" />
-      </CLASSES>
-      <JAVADOC />
-      <SOURCES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-databind/2.6.1/56c55af2ce78286195b16521a82b331cc92cae0/jackson-databind-2.6.1-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Gradle: com.google.guava:guava:18.0">
-      <CLASSES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.guava/guava/18.0/cce0823396aa693798f8882e64213b1772032b09/guava-18.0.jar!/" />
-      </CLASSES>
-      <JAVADOC />
-      <SOURCES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.guava/guava/18.0/ad97fe8faaf01a3d3faacecd58e8fa6e78a973ca/guava-18.0-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Gradle: com.octo.captcha:jcaptcha-api:1.0">
-      <CLASSES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.octo.captcha/jcaptcha-api/1.0/ff18fc63ff3871f11f5d59d929630c34ea793069/jcaptcha-api-1.0.jar!/" />
-      </CLASSES>
-      <JAVADOC />
-      <SOURCES />
-    </library>
-    <library name="Gradle: com.octo.captcha:jcaptcha:1.0">
-      <CLASSES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.octo.captcha/jcaptcha/1.0/fc28c75b6e4ab3c50fadc7503defc50886c4dfa/jcaptcha-1.0.jar!/" />
-      </CLASSES>
-      <JAVADOC />
-      <SOURCES />
-    </library>
-    <library name="Gradle: commons-beanutils:commons-beanutils:1.9.1">
-      <CLASSES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/commons-beanutils/commons-beanutils/1.9.1/d2662a4e018671ed061e9acca6299a31b7652f3c/commons-beanutils-1.9.1.jar!/" />
-      </CLASSES>
-      <JAVADOC />
-      <SOURCES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/commons-beanutils/commons-beanutils/1.9.1/44a8b7377eb4156f8a610985ed73e0395285f261/commons-beanutils-1.9.1-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Gradle: commons-codec:commons-codec:1.9">
-      <CLASSES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/commons-codec/commons-codec/1.9/9ce04e34240f674bc72680f8b843b1457383161a/commons-codec-1.9.jar!/" />
-      </CLASSES>
-      <JAVADOC />
-      <SOURCES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/commons-codec/commons-codec/1.9/3f15fff45d57656685abfee9e8302bf14580044c/commons-codec-1.9-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Gradle: commons-collections:commons-collections:3.2.1">
-      <CLASSES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/commons-collections/commons-collections/3.2.1/761ea405b9b37ced573d2df0d1e3a4e0f9edc668/commons-collections-3.2.1.jar!/" />
-      </CLASSES>
-      <JAVADOC />
-      <SOURCES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/commons-collections/commons-collections/3.2.1/fa095ef874374e5b2a11f8b06c26a5d68c7cb3a4/commons-collections-3.2.1-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Gradle: commons-configuration:commons-configuration:1.10">
-      <CLASSES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/commons-configuration/commons-configuration/1.10/2b36e4adfb66d966c5aef2d73deb6be716389dc9/commons-configuration-1.10.jar!/" />
-      </CLASSES>
-      <JAVADOC />
-      <SOURCES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/commons-configuration/commons-configuration/1.10/2427d5eaf4011f855a95bd523febda041728393b/commons-configuration-1.10-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Gradle: commons-io:commons-io:2.4">
-      <CLASSES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/commons-io/commons-io/2.4/b1b6ea3b7e4aa4f492509a4952029cd8e48019ad/commons-io-2.4.jar!/" />
-      </CLASSES>
-      <JAVADOC />
-      <SOURCES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/commons-io/commons-io/2.4/f2d8698c46d1167ff24b06a840a87d91a02db891/commons-io-2.4-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Gradle: commons-lang:commons-lang:2.6">
-      <CLASSES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/commons-lang/commons-lang/2.6/ce1edb914c94ebc388f086c6827e8bdeec71ac2/commons-lang-2.6.jar!/" />
-      </CLASSES>
-      <JAVADOC />
-      <SOURCES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/commons-lang/commons-lang/2.6/67313d715fbf0ea4fd0bdb69217fb77f807a8ce5/commons-lang-2.6-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Gradle: commons-logging:commons-logging:1.2">
-      <CLASSES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/commons-logging/commons-logging/1.2/4bfc12adfe4842bf07b657f0369c4cb522955686/commons-logging-1.2.jar!/" />
-      </CLASSES>
-      <JAVADOC />
-      <SOURCES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/commons-logging/commons-logging/1.2/ecf26c7507d67782a3bbd148d170b31dfad001aa/commons-logging-1.2-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Gradle: dom4j:dom4j:1.6.1">
-      <CLASSES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/dom4j/dom4j/1.6.1/5d3ccc056b6f056dbf0dddfdf43894b9065a8f94/dom4j-1.6.1.jar!/" />
-      </CLASSES>
-      <JAVADOC />
-      <SOURCES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/dom4j/dom4j/1.6.1/a8e7149359255f43e0e5e3b1837948f9ed5861fb/dom4j-1.6.1-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Gradle: javax.activation:activation:1.1">
-      <CLASSES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/javax.activation/activation/1.1/e6cb541461c2834bdea3eb920f1884d1eb508b50/activation-1.1.jar!/" />
-      </CLASSES>
-      <JAVADOC />
-      <SOURCES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/javax.activation/activation/1.1/3697e9f67a2ed7ac5f589cff30f21173299440/activation-1.1-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Gradle: javax.mail:mail:1.4.7">
-      <CLASSES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/javax.mail/mail/1.4.7/9add058589d5d85adeb625859bf2c5eeaaedf12d/mail-1.4.7.jar!/" />
-      </CLASSES>
-      <JAVADOC />
-      <SOURCES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/javax.mail/mail/1.4.7/bb76e5678cdb3e7488bb5578a8461e82fba5fe36/mail-1.4.7-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Gradle: javax.servlet:javax.servlet-api:3.1.0">
-      <CLASSES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/javax.servlet/javax.servlet-api/3.1.0/3cd63d075497751784b2fa84be59432f4905bf7c/javax.servlet-api-3.1.0.jar!/" />
-      </CLASSES>
-      <JAVADOC />
-      <SOURCES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/javax.servlet/javax.servlet-api/3.1.0/ab3976d4574c48d22dc1abf6a9e8bd0fdf928223/javax.servlet-api-3.1.0-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Gradle: javax.servlet:servlet-api:2.3">
-      <CLASSES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/javax.servlet/servlet-api/2.3/137a24e9f62973f01f16dd23fc1b5a9964fd9ef/servlet-api-2.3.jar!/" />
-      </CLASSES>
-      <JAVADOC />
-      <SOURCES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/javax.servlet/servlet-api/2.3/2b8664910b937aa77aaa388f2403ed019e37662e/servlet-api-2.3-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Gradle: junit:junit:4.9">
-      <CLASSES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/junit/junit/4.9/1013627e3993319870863a020034004717505815/junit-4.9.jar!/" />
-      </CLASSES>
-      <JAVADOC />
-      <SOURCES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/junit/junit/4.9/84b903feddab2bd58f5ab2fc0c5c636df42df74d/junit-4.9-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Gradle: net.sf.ehcache:ehcache-core:2.4.8">
-      <CLASSES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.sf.ehcache/ehcache-core/2.4.8/68af5269ad947dd10cfb2dd8e234769c4a9180f2/ehcache-core-2.4.8.jar!/" />
-      </CLASSES>
-      <JAVADOC />
-      <SOURCES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.sf.ehcache/ehcache-core/2.4.8/212e930930db16b186adc86ebdffb70a4f8a3cf7/ehcache-core-2.4.8-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Gradle: org.apache.commons:commons-lang3:3.4">
-      <CLASSES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.commons/commons-lang3/3.4/5fe28b9518e58819180a43a850fbc0dd24b7c050/commons-lang3-3.4.jar!/" />
-      </CLASSES>
-      <JAVADOC />
-      <SOURCES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.commons/commons-lang3/3.4/b49dafc9cfef24c356827f322e773e7c26725dd2/commons-lang3-3.4-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Gradle: org.apache.httpcomponents:httpclient:4.5">
-      <CLASSES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/httpclient/4.5/a1e6cbb3cc2c5f210dd1310ff9fcb2c09c0d1438/httpclient-4.5.jar!/" />
-      </CLASSES>
-      <JAVADOC />
-      <SOURCES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/httpclient/4.5/c9504d3448744739d334bde12bfbc91fd7f85115/httpclient-4.5-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Gradle: org.apache.httpcomponents:httpcore:4.4.1">
-      <CLASSES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/httpcore/4.4.1/f5aa318bda4c6c8d688c9d00b90681dcd82ce636/httpcore-4.4.1.jar!/" />
-      </CLASSES>
-      <JAVADOC />
-      <SOURCES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/httpcore/4.4.1/9700be0d0a331691654a8e901943c9a74e33c5fc/httpcore-4.4.1-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Gradle: org.apache.httpcomponents:httpmime:4.5">
-      <CLASSES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/httpmime/4.5/7bdb321e86724b16af6134a0fd22fec649eda971/httpmime-4.5.jar!/" />
-      </CLASSES>
-      <JAVADOC />
-      <SOURCES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/httpmime/4.5/7930c64c5dc509c147ecf8f0276698f8d83c547a/httpmime-4.5-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Gradle: org.apache.poi:poi-ooxml-schemas:3.13">
-      <CLASSES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.poi/poi-ooxml-schemas/3.13/56fb0b9f3ffc3d7f7fc9b59e17b5fa2c3ab921e7/poi-ooxml-schemas-3.13.jar!/" />
-      </CLASSES>
-      <JAVADOC />
-      <SOURCES />
-    </library>
-    <library name="Gradle: org.apache.poi:poi-ooxml:3.13">
-      <CLASSES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.poi/poi-ooxml/3.13/c364a8f5422d613e3a56db3b4b889f2989d7ee73/poi-ooxml-3.13.jar!/" />
-      </CLASSES>
-      <JAVADOC />
-      <SOURCES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.poi/poi-ooxml/3.13/a33de037e9c3d7147b56e80425621b97b6f05686/poi-ooxml-3.13-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Gradle: org.apache.poi:poi:3.13">
-      <CLASSES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.poi/poi/3.13/f59f504ba8c521e61e25f417ec652fd485010f3/poi-3.13.jar!/" />
-      </CLASSES>
-      <JAVADOC />
-      <SOURCES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.poi/poi/3.13/a400503268b807b06ce712bb99ae47710c21fb55/poi-3.13-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Gradle: org.apache.shiro:shiro-core:1.2.3">
-      <CLASSES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.shiro/shiro-core/1.2.3/4ddf1b83360c7e39f02e3e20ca364d2c448ed01f/shiro-core-1.2.3.jar!/" />
-      </CLASSES>
-      <JAVADOC />
-      <SOURCES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.shiro/shiro-core/1.2.3/3758c653223303442149304cc558e8a54c46a00b/shiro-core-1.2.3-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Gradle: org.apache.shiro:shiro-quartz:1.2.3">
-      <CLASSES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.shiro/shiro-quartz/1.2.3/6d478e45f9f6b53987eadfa82e63f924bef2d969/shiro-quartz-1.2.3.jar!/" />
-      </CLASSES>
-      <JAVADOC />
-      <SOURCES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.shiro/shiro-quartz/1.2.3/33539f7d7c9f2e19a89a55e8962734d2948f1be2/shiro-quartz-1.2.3-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Gradle: org.apache.shiro:shiro-spring:1.2.3">
-      <CLASSES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.shiro/shiro-spring/1.2.3/1e1cce0a92ce3612967de861a2a94e01e47faa73/shiro-spring-1.2.3.jar!/" />
-      </CLASSES>
-      <JAVADOC />
-      <SOURCES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.shiro/shiro-spring/1.2.3/db437ca9e54bc5704e87dfd6be9e06ca98c9cdef/shiro-spring-1.2.3-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Gradle: org.apache.shiro:shiro-web:1.2.3">
-      <CLASSES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.shiro/shiro-web/1.2.3/4dbcac122a883c29d32fe94f6b1525e5a81884ec/shiro-web-1.2.3.jar!/" />
-      </CLASSES>
-      <JAVADOC />
-      <SOURCES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.shiro/shiro-web/1.2.3/e6c9093e3dfe8384b2f9ab3678f6ec60965bafba/shiro-web-1.2.3-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Gradle: org.apache.xmlbeans:xmlbeans:2.6.0">
-      <CLASSES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.xmlbeans/xmlbeans/2.6.0/29e80d2dd51f9dcdef8f9ffaee0d4dc1c9bbfc87/xmlbeans-2.6.0.jar!/" />
-      </CLASSES>
-      <JAVADOC />
-      <SOURCES />
-    </library>
-    <library name="Gradle: org.freemarker:freemarker:2.3.23">
-      <CLASSES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.freemarker/freemarker/2.3.23/cd143cd8c02a9f838e3cb75a6dfe133750437f6d/freemarker-2.3.23.jar!/" />
-      </CLASSES>
-      <JAVADOC />
-      <SOURCES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.freemarker/freemarker/2.3.23/51b98b3e60f2d78624137437f34a3e70ab5d55ec/freemarker-2.3.23-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Gradle: org.hamcrest:hamcrest-core:1.1">
-      <CLASSES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.hamcrest/hamcrest-core/1.1/860340562250678d1a344907ac75754e259cdb14/hamcrest-core-1.1.jar!/" />
-      </CLASSES>
-      <JAVADOC />
-      <SOURCES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.hamcrest/hamcrest-core/1.1/2ccf1154d1a8936042a8a742dc3e611d02ac7213/hamcrest-core-1.1-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Gradle: org.opensymphony.quartz:quartz:1.6.1">
-      <CLASSES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.opensymphony.quartz/quartz/1.6.1/41c8f042d49c65a5889e3fd8b9598e7cfca02c5e/quartz-1.6.1.jar!/" />
-      </CLASSES>
-      <JAVADOC />
-      <SOURCES />
-    </library>
-    <library name="Gradle: org.slf4j:jcl-over-slf4j:1.7.7">
-      <CLASSES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.slf4j/jcl-over-slf4j/1.7.7/56003dcd0a31deea6391b9e2ef2f2dc90b205a92/jcl-over-slf4j-1.7.7.jar!/" />
-      </CLASSES>
-      <JAVADOC />
-      <SOURCES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.slf4j/jcl-over-slf4j/1.7.7/b5a646b81b899e930f8600c5f45766dd82743d93/jcl-over-slf4j-1.7.7-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Gradle: org.slf4j:log4j-over-slf4j:1.7.7">
-      <CLASSES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.slf4j/log4j-over-slf4j/1.7.7/d521cb26a9c4407caafcec302e7804b048b07cea/log4j-over-slf4j-1.7.7.jar!/" />
-      </CLASSES>
-      <JAVADOC />
-      <SOURCES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.slf4j/log4j-over-slf4j/1.7.7/307e030bc37259ad60dce614530d698ac74c4dc/log4j-over-slf4j-1.7.7-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Gradle: org.slf4j:slf4j-api:1.7.7">
-      <CLASSES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-api/1.7.7/2b8019b6249bb05d81d3a3094e468753e2b21311/slf4j-api-1.7.7.jar!/" />
-      </CLASSES>
-      <JAVADOC />
-      <SOURCES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-api/1.7.7/acd62e31cc314266e73eebed0b6dd7ea974a0ed/slf4j-api-1.7.7-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Gradle: org.springframework:spring-aop:4.0.7.RELEASE">
-      <CLASSES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-aop/4.0.7.RELEASE/caadec5dc4ea4899d89004ff46053f8e391e0343/spring-aop-4.0.7.RELEASE.jar!/" />
-      </CLASSES>
-      <JAVADOC />
-      <SOURCES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-aop/4.0.7.RELEASE/25abf40103d02aedd7fe0361ba91c3705ecc1495/spring-aop-4.0.7.RELEASE-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Gradle: org.springframework:spring-beans:4.0.7.RELEASE">
-      <CLASSES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-beans/4.0.7.RELEASE/fdd041f086972cc16f9b09ee420a98604cd0bc07/spring-beans-4.0.7.RELEASE.jar!/" />
-      </CLASSES>
-      <JAVADOC />
-      <SOURCES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-beans/4.0.7.RELEASE/75001c4333e5f65dc2a977c07e293564672349bc/spring-beans-4.0.7.RELEASE-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Gradle: org.springframework:spring-context-support:4.0.7.RELEASE">
-      <CLASSES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-context-support/4.0.7.RELEASE/d28f4dfc2ea3f8be8cecc299f1c44e1578804915/spring-context-support-4.0.7.RELEASE.jar!/" />
-      </CLASSES>
-      <JAVADOC />
-      <SOURCES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-context-support/4.0.7.RELEASE/f83860cd3d0f5e8ccbec0a31c6d0b33b0da64291/spring-context-support-4.0.7.RELEASE-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Gradle: org.springframework:spring-context:4.0.7.RELEASE">
-      <CLASSES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-context/4.0.7.RELEASE/8a4aa735f3691a1985381b3c6c69d32b835f51b4/spring-context-4.0.7.RELEASE.jar!/" />
-      </CLASSES>
-      <JAVADOC />
-      <SOURCES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-context/4.0.7.RELEASE/bda4611ef38be7ce6ba88b9cc9fe87985aca224a/spring-context-4.0.7.RELEASE-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Gradle: org.springframework:spring-core:4.0.7.RELEASE">
-      <CLASSES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-core/4.0.7.RELEASE/777e9502c4c2de150918a746fa22734d3eff81e0/spring-core-4.0.7.RELEASE.jar!/" />
-      </CLASSES>
-      <JAVADOC />
-      <SOURCES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-core/4.0.7.RELEASE/15ddf3bafce1029c2e36d5b3863dfffc079d4e81/spring-core-4.0.7.RELEASE-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Gradle: org.springframework:spring-expression:4.0.7.RELEASE">
-      <CLASSES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-expression/4.0.7.RELEASE/46a4cfe181b1f15940b5ea7530fcad1f8b98c561/spring-expression-4.0.7.RELEASE.jar!/" />
-      </CLASSES>
-      <JAVADOC />
-      <SOURCES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-expression/4.0.7.RELEASE/f44061901d12006f07d555e4633b66a828625639/spring-expression-4.0.7.RELEASE-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Gradle: org.springframework:spring-jdbc:4.0.7.RELEASE">
-      <CLASSES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-jdbc/4.0.7.RELEASE/2fe5d0596549795c343226e2f387a292280dd1ff/spring-jdbc-4.0.7.RELEASE.jar!/" />
-      </CLASSES>
-      <JAVADOC />
-      <SOURCES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-jdbc/4.0.7.RELEASE/86169bd474d5b05a47f43f50f938013788c2328b/spring-jdbc-4.0.7.RELEASE-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Gradle: org.springframework:spring-test:4.0.7.RELEASE">
-      <CLASSES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-test/4.0.7.RELEASE/148c20e5170e6081dfcc5afefa613e27a7b1b814/spring-test-4.0.7.RELEASE.jar!/" />
-      </CLASSES>
-      <JAVADOC />
-      <SOURCES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-test/4.0.7.RELEASE/73d07ea48ffb285738f8cb029e3bb79fc732e1f8/spring-test-4.0.7.RELEASE-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Gradle: org.springframework:spring-tx:4.0.7.RELEASE">
-      <CLASSES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-tx/4.0.7.RELEASE/756d9d0451804e534820ce7c0d1c7de75583685/spring-tx-4.0.7.RELEASE.jar!/" />
-      </CLASSES>
-      <JAVADOC />
-      <SOURCES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-tx/4.0.7.RELEASE/8989d6c17280871d266808ab861d0feccf230a2d/spring-tx-4.0.7.RELEASE-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Gradle: org.springframework:spring-web:4.0.7.RELEASE">
-      <CLASSES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-web/4.0.7.RELEASE/9c8505b6785bfe6b45bbdc8c8cbcda628feb21b1/spring-web-4.0.7.RELEASE.jar!/" />
-      </CLASSES>
-      <JAVADOC />
-      <SOURCES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-web/4.0.7.RELEASE/5c079145880e4e8b896739ba29fe597d2ef13aaa/spring-web-4.0.7.RELEASE-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Gradle: org.springframework:spring-webmvc:4.0.7.RELEASE">
-      <CLASSES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-webmvc/4.0.7.RELEASE/5d2de0ccee1d6cc02ec2d29c5440a762fd4345f6/spring-webmvc-4.0.7.RELEASE.jar!/" />
-      </CLASSES>
-      <JAVADOC />
-      <SOURCES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-webmvc/4.0.7.RELEASE/6fdecc9428ace07d6a8957bc006079c57a321998/spring-webmvc-4.0.7.RELEASE-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Gradle: stax:stax-api:1.0.1">
-      <CLASSES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/stax/stax-api/1.0.1/49c100caf72d658aca8e58bd74a4ba90fa2b0d70/stax-api-1.0.1.jar!/" />
-      </CLASSES>
-      <JAVADOC />
-      <SOURCES />
-    </library>
-    <library name="Gradle: xml-apis:xml-apis:1.0.b2">
-      <CLASSES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/xml-apis/xml-apis/1.0.b2/3136ca936f64c9d68529f048c2618bd356bf85c9/xml-apis-1.0.b2.jar!/" />
-      </CLASSES>
-      <JAVADOC />
-      <SOURCES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/xml-apis/xml-apis/1.0.b2/d8525661c5a0a05702fa41873d250d135031ec25/xml-apis-1.0.b2-sources.jar!/" />
-      </SOURCES>
-    </library>
+    <mapping directory="$PROJECT_DIR$/" vcs="Git" />
   </component>
 </project>

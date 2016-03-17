@@ -76,7 +76,7 @@ public class ApiTokenService {
 		if (e == null) {
 			return null;
 		}
-		return (ApiTokenInfo) e.getValue();
+		return (ApiTokenInfo) e.getObjectValue();
 	}
 	
 	/**

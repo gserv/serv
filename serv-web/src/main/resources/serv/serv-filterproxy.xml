@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xmlns:mvc="http://www.springframework.org/schema/mvc"  
+    xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:cache="http://www.springframework.org/schema/cache"
+    xmlns:context="http://www.springframework.org/schema/context"  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans   
+                        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd  
+                        http://www.springframework.org/schema/mvc  
+                        http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd  
+                        http://www.springframework.org/schema/context   
+                        http://www.springframework.org/schema/context/spring-context-3.0.xsd
+						http://www.springframework.org/schema/cache
+						http://www.springframework.org/schema/cache/spring-cache-3.2.xsd
+						http://www.springframework.org/schema/aop
+                        http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+                        
+	<!--
+		Web.xml
+		
+		<filter> 
+			<filter-name>filterProxy</filter-name> 
+			<filter-class> 
+				org.springframework.web.filter.DelegatingFilterProxy 
+			</filter-class> 
+	        <init-param>  
+	             <param-name>targetFilterLifecycle</param-name>  
+	             <param-value>true</param-value>  
+	        </init-param>  
+		</filter> 
+		<filter-mapping> 
+			<filter-name>filterProxy</filter-name> 
+			<url-pattern>/*</url-pattern> 
+		</filter-mapping>
+	 -->
+	
+	<!-- 
+		过滤器除了要继承自javax.servlet.Filter接口外，还要声明为Spring Bean，并且注入到FilterProxyWrap类中
+		过滤器代理自动扫描所有声明的FilterProxyWrap
+		
+	    <bean class="serv.web.filter.FilterProxyWrap" >
+	    	<property name="filter" ref="shiroFilter" ></property>
+	    	<property name="priority" value="1" ></property>
+	    </bean>
+	 -->
+	
+	<!-- 过滤器代理方法 -->
+	<bean id="filterProxy" class="serv.web.filter.FilterProxy" scope="singleton" >
+	</bean>
+	
+</beans>
+

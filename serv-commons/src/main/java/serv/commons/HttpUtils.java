@@ -14,7 +14,6 @@ import org.apache.commons.io.IOUtils;
 import org.apache.http.Header;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
-import org.apache.http.client.HttpClient;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
@@ -23,27 +22,28 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.entity.mime.HttpMultipartMode;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
 import org.apache.http.entity.mime.content.FileBody;
-import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 
 /**
  * HTTP静态工具包
- * 
+ *
  * @author shiying
  *
  */
 public class HttpUtils {
-	
+
 	public static final int timeout = 1000 * 60 * 30;
-	
+
 	public static File download(String url, String filebasename) throws IOException {
 		File tmpfile = download(url);
 		File f = new File(tmpfile.getParentFile(), filebasename);
 		tmpfile.renameTo(f);
 		return f;
 	}
-	
+
 	/**
 	 * 下载到指定文件
 	 * @param url
@@ -54,16 +54,16 @@ public class HttpUtils {
 		File tmpfile = download(url);
 		org.apache.commons.io.FileUtils.copyFile(tmpfile, file);
 	}
-	
-	
+
+
 	/**
 	 * 文件下载
 	 * @param url
 	 * @return
-	 * @throws IOException 
+	 * @throws IOException
 	 */
 	public static File download(String url) throws IOException {
-		HttpClient http = new DefaultHttpClient();
+		CloseableHttpClient http = HttpClientBuilder.create().build();
 		HttpGet get = new HttpGet(url);
 		RequestConfig requestConfig = RequestConfig.custom().setSocketTimeout(timeout).setConnectTimeout(timeout).build();//设置请求和传输超时时间
 		get.setConfig(requestConfig);
@@ -96,15 +96,15 @@ public class HttpUtils {
 				is.close();
 			}
 			return file;
-			
+
 		} catch (IOException e) {
 			throw new IOException(e);
 		} finally {
 			get.releaseConnection();
-			http.getConnectionManager().shutdown();
+			http.close();
 		}
 	}
-	
+
 	/**
 	 * 发送POST请求
 	 * @param url
@@ -114,7 +114,7 @@ public class HttpUtils {
 	 */
 	@SuppressWarnings("deprecation")
 	public static String post(String url, String body) throws IOException {
-		HttpClient http = new DefaultHttpClient();
+		CloseableHttpClient http = HttpClientBuilder.create().build();
 		HttpPost post = new HttpPost(url);
 		RequestConfig requestConfig = RequestConfig.custom().setSocketTimeout(timeout).setConnectTimeout(timeout).build();//设置请求和传输超时时间
 		post.setConfig(requestConfig);
@@ -123,28 +123,28 @@ public class HttpUtils {
 			post.setEntity(new StringEntity(body, "UTF-8"));
 			HttpResponse response = http.execute(post);
 			if (response.getStatusLine().getStatusCode() != 200) {
-				throw new IOException("Unexpected status code : " + response.getStatusLine().getStatusCode() 
+				throw new IOException("Unexpected status code : " + response.getStatusLine().getStatusCode()
 						+ ", response body [" + IOUtils.toString(response.getEntity().getContent(), "UTF-8") + "] ");
 			}
 			return IOUtils.toString(response.getEntity().getContent(), "UTF-8");
-			
+
 		} catch (IOException e) {
 			throw new IOException(e);
 		} finally {
 			post.releaseConnection();
-			http.getConnectionManager().shutdown();
+			http.close();
 		}
 	}
-	
+
 	/**
 	 * 发送POST请求
 	 * @param url
 	 * @param requestEntity
 	 * @return
-	 * @throws IOException 
+	 * @throws IOException
 	 */
 	public static String post(String url, Map<String, File> filePart, Map<String, String> parmars) throws IOException {
-		HttpClient http = new DefaultHttpClient();
+		CloseableHttpClient http = HttpClientBuilder.create().build();
 		HttpPost post = new HttpPost(url);
 		RequestConfig requestConfig = RequestConfig.custom().setSocketTimeout(timeout).setConnectTimeout(timeout).build();//设置请求和传输超时时间
 		post.setConfig(requestConfig);
@@ -162,19 +162,19 @@ public class HttpUtils {
 			post.setEntity(builder.build());
 			HttpResponse response = http.execute(post);
 			if (response.getStatusLine().getStatusCode() != 200) {
-				throw new IOException("Unexpected status code : " + response.getStatusLine().getStatusCode() 
+				throw new IOException("Unexpected status code : " + response.getStatusLine().getStatusCode()
 						+ ", response body [" + IOUtils.toString(response.getEntity().getContent(), "UTF-8") + "] ");
 			}
 			return IOUtils.toString(response.getEntity().getContent(), "UTF-8");
-			
+
 		} catch (IOException e) {
 			throw new IOException(e);
 		} finally {
 			post.releaseConnection();
-			http.getConnectionManager().shutdown();
+			http.close();
 		}
 	}
-	
+
 	/**
 	 * 发送POST请求
 	 * @param url
@@ -183,7 +183,7 @@ public class HttpUtils {
 	 * @throws IOException
 	 */
 	public static String post(String url, Map<String, String> parmars) throws IOException {
-		HttpClient http = new DefaultHttpClient();
+		CloseableHttpClient http = HttpClientBuilder.create().build();
 		HttpPost post = new HttpPost(url);
 		RequestConfig requestConfig = RequestConfig.custom().setSocketTimeout(timeout).setConnectTimeout(timeout).build();//设置请求和传输超时时间
 		post.setConfig(requestConfig);
@@ -196,19 +196,19 @@ public class HttpUtils {
 			post.setEntity(new UrlEncodedFormEntity(nvps, "UTF-8"));
 			HttpResponse response = http.execute(post);
 			if (response.getStatusLine().getStatusCode() != 200) {
-				throw new IOException("Unexpected status code : " + response.getStatusLine().getStatusCode() 
+				throw new IOException("Unexpected status code : " + response.getStatusLine().getStatusCode()
 						+ ", response body [" + IOUtils.toString(response.getEntity().getContent(), "UTF-8") + "] ");
 			}
 			return IOUtils.toString(response.getEntity().getContent(), "UTF-8");
-			
+
 		} catch (IOException e) {
 			throw new IOException(e);
 		} finally {
 			post.releaseConnection();
-			http.getConnectionManager().shutdown();
+			http.close();
 		}
 	}
-	
+
 	/**
 	 * 发送GET请求
 	 * @param url
@@ -217,7 +217,7 @@ public class HttpUtils {
 	 * @throws IOException
 	 */
 	public static String get(String url, Map<String, String> parmars) throws IOException {
-		HttpClient http = new DefaultHttpClient();
+		CloseableHttpClient http = HttpClientBuilder.create().build();
 		HttpGet get = new HttpGet();
 		RequestConfig requestConfig = RequestConfig.custom().setSocketTimeout(timeout).setConnectTimeout(timeout).build();//设置请求和传输超时时间
 		get.setConfig(requestConfig);
@@ -247,7 +247,7 @@ public class HttpUtils {
 			throw new IOException(e);
 		} finally {
 			get.releaseConnection();
-			http.getConnectionManager().shutdown();
+			http.close();
 		}
 	}
 
