@@ -1,0 +1,30 @@
+
+/**
+ * 递归的获得项目依赖列表
+ */
+def projectDependenciesRecursion = { c ->
+	
+	def depends = [];
+	//
+	def stack = new java.util.Stack();
+	stack.push(c);
+	while (!stack.empty()) {
+		def i = stack.pop();
+		//
+		if (i != c) {
+			depends.add(i);
+		}
+		//
+		def projectDependencies = i.configurations.runtime.getAllDependencies().withType(ProjectDependency)
+		def dependentProjects = projectDependencies*.dependencyProject
+		dependentProjects.each { it ->
+			stack.push(it);
+		}
+	}
+	return depends;
+}
+
+ext {
+    ext_utils = [:]
+    ext_utils['projectDependenciesRecursion'] = projectDependenciesRecursion
+}

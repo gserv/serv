@@ -1,0 +1,160 @@
+
+apply from: 'gradle/utils.gradle'
+
+
+def eclipse_facets_java = { subproj ->
+	
+	subproj.eclipse {
+		project {
+			name = subproj.name
+		}
+	}
+}
+
+
+def eclipse_facets_web = { subproj ->
+	
+	subproj.eclipse {
+		project {
+			name = subproj.name
+		}
+
+		wtp {
+			component {
+				contextPath = subproj.name
+				deployName = subproj.name
+			}
+			facet {
+				facet name: 'jst.java', version: '1.7'
+				facet name: 'jst.web', version: '3.0'
+			}
+		}
+	}
+}
+
+
+
+def idea_facets_java = { subproj ->
+	
+}
+
+
+
+	
+def idea_facets_web = { subproj ->
+	
+	subproj.idea.module {
+
+		iml.withXml { xmlFile ->
+			// setup 'Web' facets
+			def facetManager = xmlFile.asNode().component.find { it.@name == 'FacetManager' } as Node
+			if (facetManager) {
+				Node webFacet = facetManager.facet.find { it.@type == 'web' }
+				if (webFacet)
+					facetManager.remove(webFacet)
+			} else {
+				facetManager = xmlFile.asNode().appendNode('component', [name: 'FacetManager']);
+			}
+
+			def builder = new NodeBuilder()
+			def webFacet = builder.facet(type: "web", name: 'Web') {
+				configuration {
+					descriptors {
+						deploymentDescriptor(name: 'web.xml', url: 'file://$MODULE_DIR$/src/main/webapp/WEB-INF/web.xml')
+					}
+					webroots {
+						root(url: 'file://$MODULE_DIR$/src/main/webapp', relative: '/'+subproj.name)
+					}
+					sourceRoots {
+						root(url: 'file://$MODULE_DIR$/src/main/resources')
+						root(url: 'file://$MODULE_DIR$/src/main/java')
+					}
+				}
+			}
+			facetManager.append webFacet
+		}
+	}
+	
+	
+	rootProject.idea {
+		
+		project {
+			ipr.withXml { xmlFile ->
+				// enable 'Annotation Processors'
+				xmlFile.asNode().component.find { it.@name == 'CompilerConfiguration' }['annotationProcessing'][0].replaceNode {
+					annotationProcessing {
+						profile(default: true, name: 'Default', useClasspath: 'true', enabled: true)
+					}
+				}
+
+				// setup Git root
+				xmlFile.asNode().component.find { it.@name == 'VcsDirectoryMappings' }.replaceNode {
+					component(name: 'VcsDirectoryMappings') {
+						mapping(directory: "",  vcs: "")
+						mapping(directory: "\$PROJECT_DIR\$/", vcs: 'Git')
+					}
+				}
+
+				// setup compiler output directory
+				xmlFile.asNode().component.find { it.@name == 'ProjectRootManager' }['output'][0].replaceNode {
+					output(url: "file://\$PROJECT_DIR\$/out")
+				}
+
+				// setup artifact configuration
+				def artifactManager = xmlFile.asNode().component.find { it.@name == 'ArtifactManager' } as Node
+				if (artifactManager) {
+					Node artifact = artifactManager.artifact.find { it.@type == 'exploded-war' && it.@name == subproj.name }
+					if (artifact) {
+						artifactManager.remove(artifact)
+					}
+				} else {
+					artifactManager = xmlFile.asNode().appendNode('component', [name: 'ArtifactManager']);
+				}
+
+				def artifact = new NodeBuilder().artifact(type: 'exploded-war', 'build-on-make': "true", name: subproj.name) {
+					'output-path'("\$PROJECT_DIR\$/out/"+subproj.name)
+
+					root(id: 'root') {
+						element(id: 'directory', name: 'WEB-INF') {
+							element(id: 'directory', name: 'classes') {
+								// 增加依赖的项目
+								def projDep = ext_utils['projectDependenciesRecursion'](subproj)
+								projDep.add(subproj);
+								projDep.each { proj ->
+									element(id: 'module-output', name: proj.name)
+								}
+							}
+							element(id: 'directory', name: 'lib') {
+								subproj.configurations.runtime.each {
+									element(id: 'file-copy', path: it)
+								}
+							}
+						}
+						// element(id: 'javaee-facet-resources', facet: subproj.name+"/web/Web")
+						element(id: 'dir-copy', path: '$PROJECT_DIR$/'+subproj.name+'/src/main/webapp')
+					}
+				}
+				artifactManager.append artifact
+			}
+		}
+		
+	}
+	
+	
+	
+	
+}
+ext {
+    ext_facets = [:]
+    ext_facets['idea_facets_java'] = idea_facets_java
+    ext_facets['idea_facets_web'] = idea_facets_web
+    ext_facets['eclipse_facets_java'] = eclipse_facets_java
+    ext_facets['eclipse_facets_web'] = eclipse_facets_web
+}
+
+
+
+
+
+
+
