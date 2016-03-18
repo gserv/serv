@@ -11,7 +11,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import serv.commons.context.HttpRequestContext;
+import serv.web.context.HttpRequestContext;
 
 public class HttpRequestContextFilter implements Filter {
 

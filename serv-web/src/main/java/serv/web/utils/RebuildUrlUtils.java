@@ -1,4 +1,4 @@
-package serv.commons.web;
+package serv.web.utils;
 
 import java.util.Arrays;
 import java.util.Map;

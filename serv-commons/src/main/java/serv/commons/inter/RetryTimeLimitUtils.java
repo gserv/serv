@@ -36,19 +36,6 @@ public class RetryTimeLimitUtils {
 		this.timeLength = timeLength;
 		this.unit = unit;
 	}
-
-
-	public static void main(String[] arges) throws InterruptedException {
-		RetryTimeLimitUtils test = new RetryTimeLimitUtils(10, 10, TimeUnit.SECONDS);
-		System.out.println("aaa >> " + test.check("aaa"));
-		for (int i=0; i<10; i++) {
-			test.logRequest("aaa");
-		}
-		System.out.println("aaa >> " + test.check("aaa"));
-		System.out.println("bbb >> " + test.check("bbb"));
-		Thread.sleep(1000 * 11);
-		System.out.println("aaa >> " + test.check("aaa"));
-	}
 	
 	
 	public void logRequest(String key) {
@@ -58,7 +45,6 @@ public class RetryTimeLimitUtils {
 			cacheTime.put(key, 1);
 			return;
 		}
-		System.out.println(unit.convert(new Date().getTime() - lastReq.getTime(), TimeUnit.MILLISECONDS));
 		if (unit.convert(new Date().getTime() - lastReq.getTime(), TimeUnit.MILLISECONDS) > timeLength) {
 			cacheLastReq.put(key, new Date());
 			cacheTime.put(key, 1);

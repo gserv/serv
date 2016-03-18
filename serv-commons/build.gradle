@@ -14,8 +14,6 @@ ext_facets['eclipse_facets_java'](this)
 dependencies {
 
     compile (
-			libraries.'servlet-api',
-
 			// mail
 			libraries.'spring-context-support',
 			libraries.'spring-webmvc',
@@ -29,6 +27,7 @@ dependencies {
 	)
 
 	runtime (
+			libraries."servlet-api"
 	)
 }
 

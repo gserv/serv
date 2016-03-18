@@ -10,7 +10,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletResponse;
 
-import serv.commons.context.HttpRequestContext;
+import serv.web.context.HttpRequestContext;
 
 /**
  * Servlet Filter implementation class CORSFilter

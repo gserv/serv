@@ -1,4 +1,4 @@
-package serv.commons.web;
+package serv.web.utils;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;

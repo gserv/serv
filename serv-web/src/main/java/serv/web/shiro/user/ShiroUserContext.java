@@ -2,7 +2,7 @@ package serv.web.shiro.user;
 
 import org.apache.shiro.SecurityUtils;
 
-import serv.commons.context.HttpRequestContext;
+import serv.web.context.HttpRequestContext;
 
 /**
  * Shiro用户工具

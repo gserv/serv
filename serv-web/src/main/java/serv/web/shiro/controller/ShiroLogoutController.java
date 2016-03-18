@@ -7,7 +7,7 @@ import org.apache.shiro.SecurityUtils;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.Controller;
 
-import serv.commons.context.HttpRequestContext;
+import serv.web.context.HttpRequestContext;
 
 /**
  * Shiro退出控制器

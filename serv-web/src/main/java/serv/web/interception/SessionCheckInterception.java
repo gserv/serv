@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
-import serv.commons.context.HttpRequestContext;
+import serv.web.context.HttpRequestContext;
 
 /**
  * Session检查拦截器

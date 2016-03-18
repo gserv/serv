@@ -32,6 +32,11 @@ public class TestDefaultMessageValidateService {
         obj.put("chi", chi);
 //		System.out.println(validate("[nn=to2][toUserName=to1][fromUserName=to2]", obj));
         System.out.println(valid.validate("[chi.cc=aa]", obj));
+
+        //
+        Map<String, Object> context = new HashMap<>();
+        System.out.println(valid.validate("[chi.cc?=a(.*?)]", obj, context));
+        System.out.println(context);
     }
 
 }
