@@ -2,11 +2,8 @@
 <beans 
   xmlns="http://www.springframework.org/schema/beans" 
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:util="http://www.springframework.org/schema/util"
   xsi:schemaLocation="http://www.springframework.org/schema/beans 
-	http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
-    http://www.springframework.org/schema/util 
-    http://www.springframework.org/schema/util/spring-util-2.0.xsd" >
+	http://www.springframework.org/schema/beans/spring-beans-2.0.xsd" >
     
     
     <import resource="classpath*:serv/serv-springfactory.xml" />
@@ -30,9 +27,6 @@
 	<bean id="wxServiceManager" class="com.github.gserv.serv.wx.service.manager.SimpleWxServiceManager" >
 		<property name="appId" value="wx5641c2474b7e5ab7" ></property>
 		<property name="appSecret" value="d0f06e3e128cba96f1f0b7240ac24200" ></property>
-		<property name="proxyAccessTokenUrl" value="http://123.139.154.144/wxapi_proxy/api/accessToken.do" ></property>
-		<property name="proxyAccessTokenAccessId" value="wx_test_shiying" ></property>
-		<property name="proxyAccessTokenAccessKey" value="test" ></property>
 		<property name="token" value="wxlzmtest20131006" ></property>
 	</bean>
 	
