@@ -8,8 +8,6 @@
     
     <import resource="classpath*:serv/serv-springfactory.xml" />
 	<import resource="applicationContext-wx-answer.xml" />
-    
-    
 	
 	<bean id="CacheLoader" class="com.github.gserv.serv.wx.support.cache.CacheLoader" ></bean>
 	

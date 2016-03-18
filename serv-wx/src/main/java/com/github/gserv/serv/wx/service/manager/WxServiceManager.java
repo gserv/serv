@@ -97,6 +97,7 @@ public abstract class WxServiceManager implements WxConf {
 		} else {
 			try {
 				Class<? extends WxServiceLoader<?>> wxServiceLoaderClass = serviceMeta.get(wxServiceClass);
+				System.out.println(wxServiceLoaderClass);
 				WxServiceLoader<?> wxServiceLoader = Springfactory.getBean(wxServiceLoaderClass);
 				if (wxServiceLoader == null) {
 					logger.warn("wx service load faild, not found in spring factory. class [{}]", wxServiceLoaderClass);

@@ -121,7 +121,7 @@ public class NoticeAcceptService {
 			// 接收消息
 			if (noticeAcceptContext.getReqbody() == null || noticeAcceptContext.getReqbody().trim().length() <= 0) {
 				logger.warn("Illegal weixin message  [{}]", noticeAcceptContext.getReqbody());
-				return "Illegal weixin message, " + noticeAcceptContext.getReqbody();
+				return "<xml>Illegal weixin message, " + noticeAcceptContext.getReqbody() + "</xml>";
 			}
 			logger.debug("revc weixin message  [{}]", noticeAcceptContext.getReqbody());
 			AbstractRevcMessage revcObj = AbstractRevcMessage.parseWxRevcXml(noticeAcceptContext.getReqbody());
