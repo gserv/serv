@@ -57,7 +57,7 @@ public class RetryTimeLimitUtils {
 	}
 	
 	public boolean check(String key) {
-		return cacheTime.get(key) == null || 
+		boolean res = cacheTime.get(key) == null ||
 				unit.convert(new Date().getTime() - cacheLastReq.get(key).getTime(), TimeUnit.MILLISECONDS) > timeLength
 				||
 				(
@@ -65,6 +65,11 @@ public class RetryTimeLimitUtils {
 					&&
 					cacheTime.get(key) < limit
 				);
+		if (res) {
+			cacheLastReq.remove(key);
+			cacheTime.remove(key);
+		}
+		return res;
 	}
 
 }

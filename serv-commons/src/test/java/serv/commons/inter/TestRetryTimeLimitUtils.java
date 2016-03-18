@@ -1,5 +1,6 @@
 package serv.commons.inter;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.concurrent.TimeUnit;
@@ -16,14 +17,20 @@ public class TestRetryTimeLimitUtils {
         TimeUnit unit = TimeUnit.SECONDS;   // 单位时间单位，表示秒，更多单位参考java.util.concurrent.TimeUnit类
         // 每十秒内，每个客户端（key）调用次数不能超过10次
         RetryTimeLimitUtils test = new RetryTimeLimitUtils(limit, timeLength, unit);
-        System.out.println("aaa >> " + test.check("aaa"));
+        Assert.assertTrue(test.check("aaa"));
         for (int i=0; i<10; i++) {
             test.logRequest("aaa");
         }
-        System.out.println("aaa >> " + test.check("aaa"));
-        System.out.println("bbb >> " + test.check("bbb"));
+        Assert.assertFalse(test.check("aaa"));
+        Assert.assertTrue(test.check("bbb"));
         Thread.sleep(1000 * 11);
-        System.out.println("aaa >> " + test.check("aaa"));
+        Assert.assertTrue(test.check("aaa"));
+        //
+        for (int i=0; i<10; i++) {
+            test.logRequest("aaa");
+            Assert.assertTrue(test.check("aaa"));   // 每次验证通过自动clear
+        }
+        Assert.assertTrue(test.check("aaa"));
     }
 
 }
