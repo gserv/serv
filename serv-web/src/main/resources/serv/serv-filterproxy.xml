@@ -39,14 +39,14 @@
 		过滤器除了要继承自javax.servlet.Filter接口外，还要声明为Spring Bean，并且注入到FilterProxyWrap类中
 		过滤器代理自动扫描所有声明的FilterProxyWrap
 		
-	    <bean class="serv.web.filter.FilterProxyWrap" >
+	    <bean class="FilterProxyWrap" >
 	    	<property name="filter" ref="shiroFilter" ></property>
 	    	<property name="priority" value="1" ></property>
 	    </bean>
 	 -->
 	
 	<!-- 过滤器代理方法 -->
-	<bean id="filterProxy" class="serv.web.filter.FilterProxy" scope="singleton" >
+	<bean id="filterProxy" class="com.github.gserv.serv.web.filter.FilterProxy" scope="singleton" >
 	</bean>
 	
 </beans>

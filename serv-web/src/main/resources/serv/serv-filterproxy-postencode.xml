@@ -17,7 +17,7 @@
                         http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
                        
     <!-- POST编码过滤器代理 -->
-	<bean class="serv.web.filter.FilterProxyWrap" >
+	<bean class="com.github.gserv.serv.web.filter.FilterProxyWrap" >
     	<property name="filter" >
     		<bean class="org.springframework.web.filter.CharacterEncodingFilter" >
     			<property name="encoding" value="UTF-8" ></property>

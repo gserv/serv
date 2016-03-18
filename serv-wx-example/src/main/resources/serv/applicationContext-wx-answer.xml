@@ -10,12 +10,12 @@
 	
 	
 	<!-- 应答处理器 -->
-	<bean id="defaultWxMessageHandler" class="serv.wx.support.handler.DefaultWxMessageHandler" >
+	<bean id="defaultWxMessageHandler" class="com.github.gserv.serv.wx.support.handler.DefaultWxMessageHandler" >
 		<property name="useExpression" value="true" />
 		<property name="messageMap" >
 			<util:map map-class="java.util.LinkedHashMap" >
 				<entry key="[msgType=text][content^=hello]" >
-					<bean class="serv.wx.message.send.SendTextMessage" >
+					<bean class="com.github.gserv.serv.wx.message.send.SendTextMessage" >
 						<property name="content" value="this is a text message." ></property>
 					</bean>
 				</entry>
@@ -25,7 +25,7 @@
 	
 	
 	<!-- 处理器链 -->
-	<bean id="wxMessageHandlerChain" class="serv.wx.support.handler.WxMessageChainHandler" >
+	<bean id="wxMessageHandlerChain" class="com.github.gserv.serv.wx.support.handler.WxMessageChainHandler" >
 		<property name="handlerList" >
 			<list>
 				<!-- 群发消息受理处理器

@@ -17,7 +17,7 @@
                         http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
 	
 	<!-- Spring 静态获取 Bean 的方法 -->
-	<bean id="Springfactory" class="serv.commons.Springfactory" scope="singleton" >
+	<bean id="Springfactory" class="com.github.gserv.serv.commons.Springfactory" scope="singleton" >
 	</bean>
 	
 </beans>

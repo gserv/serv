@@ -14,20 +14,20 @@
     
     
 	
-	<bean id="CacheLoader" class="serv.wx.support.cache.CacheLoader" ></bean>
+	<bean id="CacheLoader" class="com.github.gserv.serv.wx.support.cache.CacheLoader" ></bean>
 	
-	<bean id="WxApiAccessTokenServiceLoader" class="serv.wx.support.api.accesstoken.WxApiAccessTokenServiceLoader" ></bean>
+	<bean id="WxApiAccessTokenServiceLoader" class="com.github.gserv.serv.wx.support.api.accesstoken.WxApiAccessTokenServiceLoader" ></bean>
 	
-	<bean id="WxStatisticsServiceLoader" class="serv.wx.support.api.statistics.WxStatisticsServiceLoader" ></bean>
+	<bean id="WxStatisticsServiceLoader" class="com.github.gserv.serv.wx.support.api.statistics.WxStatisticsServiceLoader" ></bean>
 	
-	<bean id="WxUserInfoServiceLoader" class="serv.wx.support.api.userinfo.WxUserInfoServiceLoader" ></bean>
+	<bean id="WxUserInfoServiceLoader" class="com.github.gserv.serv.wx.support.api.userinfo.WxUserInfoServiceLoader" ></bean>
 	
-	<bean id="WxApiAuthenticationStateServiceLoader" class="serv.wx.support.api.authentication.WxApiAuthenticationStateServiceLoader" ></bean>
+	<bean id="WxApiAuthenticationStateServiceLoader" class="com.github.gserv.serv.wx.support.api.authentication.WxApiAuthenticationStateServiceLoader" ></bean>
 	
-	<bean id="WxMediaServiceLoader" class="serv.wx.support.api.media.WxMediaServiceLoader" ></bean>
+	<bean id="WxMediaServiceLoader" class="com.github.gserv.serv.wx.support.api.media.WxMediaServiceLoader" ></bean>
 	
     
-	<bean id="wxServiceManager" class="serv.wx.service.manager.SimpleWxServiceManager" >
+	<bean id="wxServiceManager" class="com.github.gserv.serv.wx.service.manager.SimpleWxServiceManager" >
 		<property name="appId" value="wx5641c2474b7e5ab7" ></property>
 		<property name="appSecret" value="d0f06e3e128cba96f1f0b7240ac24200" ></property>
 		<property name="proxyAccessTokenUrl" value="http://123.139.154.144/wxapi_proxy/api/accessToken.do" ></property>
@@ -37,14 +37,14 @@
 	</bean>
 	
 	<!-- 微信通知受理服务 -->
-	<bean id="noticeAcceptService" class="serv.wx.service.accept.NoticeAcceptService" >
+	<bean id="noticeAcceptService" class="com.github.gserv.serv.wx.service.accept.NoticeAcceptService" >
 		<property name="wxServiceManager" ref="wxServiceManager" ></property>
 		<property name="wxMessageHandler" ref="wxMessageHandlerChain" ></property>
 	</bean>
 	
 	
 	<!-- 微信通知入口控制器 -->
-	<bean id="wxNoticeController" class="serv.wx.controller.WxNoticeController" >
+	<bean id="wxNoticeController" class="com.github.gserv.serv.wx.controller.WxNoticeController" >
 		<property name="noticeAcceptService" ref="noticeAcceptService" ></property>
 	</bean>
 	
