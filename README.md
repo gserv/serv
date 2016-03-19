@@ -4,7 +4,5 @@
 
 项目首页：http://gserv.github.io/serv		
 
-发布地址：
-	https://raw.githubusercontent.com/gserv/serv/master/dist/release/    
-	https://raw.githubusercontent.com/gserv/serv/master/dist/snapshot/    
+发布地址：参考 [wiki/maven仓库](https://github.com/gserv/serv/wiki/maven%E4%BB%93%E5%BA%93)
 	
