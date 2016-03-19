@@ -1,4 +1,7 @@
 
+
+apply plugin: 'maven'
+
 	
 // uploadArchives结束自动调用仓库的脚本生成仓库索引
 task buildIndex(type:Exec) {
@@ -10,8 +13,8 @@ task buildIndex(type:Exec) {
 	newSh.createNewFile();
 	//
     def out = newSh.newPrintWriter() //  
-    out.write('#!/bin/bash')  
-    out.write('\n\n')  
+	//	out.write('#!/bin/bash')  
+	//	out.write('\n\n')  
     out.write("cd ${rootProject.rootDir}/dist/.index/")  
     out.write('\n')  
     out.write('java -jar nexus-indexer-2.0.5-cli.jar -t full -i . -n . -r ../')  
@@ -21,7 +24,7 @@ task buildIndex(type:Exec) {
 	//
 	commandLine 'cmd', '/c', newSh.getAbsolutePath()
 	//
-	newSh.delete();
+	newSh.deleteOnExit();
 }
 
 	

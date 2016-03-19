@@ -1,5 +1,7 @@
 
-////////////////////////////////////////
+
+
+// /////////////////////////////////////
 // generator facets
 
 apply plugin: 'idea'
@@ -8,7 +10,8 @@ ext_facets['idea_facets_java'](this)
 apply plugin: 'eclipse'
 ext_facets['eclipse_facets_java'](this)
 
-////////////////////////////////////////
+// \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
 
 
 apply plugin: 'maven'

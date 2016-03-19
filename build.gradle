@@ -35,7 +35,7 @@ ext {
     github_org = 'gserv'
     project_group = 'com.github' + "." + github_org
     project_name = 'serv'
-    //project_version = '0.0.1-SNAPSHOT'
+    // project_version = '0.0.1-SNAPSHOT'
     project_description = 'micro service project attempt.'
 
     project_jdk = '1.7'
@@ -119,6 +119,7 @@ apply from: 'gradle/facet.gradle'
 
 apply plugin: 'maven'
 apply from: 'gradle/deploy.gradle'
+
 
 
 allprojects {
