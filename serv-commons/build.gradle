@@ -11,6 +11,11 @@ ext_facets['eclipse_facets_java'](this)
 ////////////////////////////////////////
 
 
+apply plugin: 'maven'
+ext_deploy['uploadArchivesSupport'](this)
+
+
+
 dependencies {
 
     compile (

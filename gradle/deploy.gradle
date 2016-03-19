@@ -1,0 +1,95 @@
+
+	
+// uploadArchives结束自动调用仓库的脚本生成仓库索引
+task buildIndex(type:Exec) {
+	File path = new File("${rootProject.rootDir}/dist/.index/");
+	path.listFiles().each { f ->
+		if (f.getName().endsWith(".bat")) f.delete();
+	}
+	File newSh = new File(path, "buildIndex_" + new Date().getTime() + ".bat");
+	newSh.createNewFile();
+	//
+    def out = newSh.newPrintWriter() //  
+    out.write('#!/bin/bash')  
+    out.write('\n\n')  
+    out.write("cd ${rootProject.rootDir}/dist/.index/")  
+    out.write('\n')  
+    out.write('java -jar nexus-indexer-2.0.5-cli.jar -t full -i . -n . -r ../')  
+    out.write('\n')  
+    out.flush()  
+    out.close()
+	//
+	commandLine 'cmd', '/c', newSh.getAbsolutePath()
+	//
+	newSh.delete();
+}
+
+	
+/**
+ * 增加组件上传支持
+ */
+def uploadArchivesSupport = { subproj ->
+
+    subproj.configurations {
+
+        deployerJars
+	}
+	
+	subproj.dependencies {
+		// 用于上传自己项目的jar 包到中心 maven 库
+		deployerJars "org.apache.maven.wagon:wagon-ssh:2.2"
+	}
+	
+	subproj.uploadArchives {
+		
+        repositories.mavenDeployer {
+            // beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+
+			pom.groupId = (project_group + "." + project_name)
+			pom.artifactId = subproj.name
+			pom.version = subproj.version
+			
+            configuration = subproj.configurations.deployerJars
+            repository(
+                // 这儿需要注意，后面的地址是服务器地址，需要写全，是个大坑啊
+                // 另外初次执行的时候最好带上 --info 参数，会提示保存 ssh 验证信息的
+                // 这时候需要输入 yes
+                //
+                // 更详细说明参见我的 blog: http://my.oschina.net/someok/blog/374562
+                url: //"file://d:/Develop/MyProjects/repos/"
+                   // "scp://repos.example.com:22/home/maven/repos/release"
+					("file://" + new File(rootProject.rootDir, "dist").getAbsolutePath().replaceAll("\\\\", "\\/"))
+            )
+
+			pom.project {
+				name pom.artifactId
+				packaging pom.groupId
+				description project_description
+				url "https://github.com/${github_org}/${project_name}"
+
+				scm {
+					url "https://github.com/${github_org}/${project_name}.git"
+					connection "scm:git:https://github.com/${github_org}/${project_name}.git"
+					developerConnection "scm:git:git@github.com:${github_org}/${project_name}.git"
+				}
+
+				licenses {
+					license {
+						name 'MIT License'
+						url 'http://www.apache.org/licenses/'
+						distribution 'repo'
+					}
+				}
+			}
+			
+        }
+    }
+	subproj.uploadArchives.finalizedBy buildIndex
+	
+	
+}
+
+ext {
+    ext_deploy = [:]
+    ext_deploy['uploadArchivesSupport'] = uploadArchivesSupport
+}
