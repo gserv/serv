@@ -4,4 +4,7 @@
 
 项目首页：http://gserv.github.io/serv		
 
-发布地址：https://raw.githubusercontent.com/gserv/serv/master/dist/    
+发布地址：
+	https://raw.githubusercontent.com/gserv/serv/master/dist/release/    
+	https://raw.githubusercontent.com/gserv/serv/master/dist/snapshot/    
+	
