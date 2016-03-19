@@ -99,7 +99,7 @@ allprojects {
 
 subprojects { subproj ->
 	
-    group = (project_group + "." + project_name)
+    group = (project_group)
 
     apply plugin: 'java'
     sourceCompatibility = project_jdk

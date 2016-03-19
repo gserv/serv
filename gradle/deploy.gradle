@@ -38,7 +38,7 @@ def uploadArchivesSupport = { subproj ->
 	subproj.publishing {
 		publications {
 			task "maven_publish_${subproj.name}_" (MavenPublication) {
-				groupId (project_group + "." + project_name)
+				groupId (project_group)
 				artifactId subproj.name
 				version subproj.version
 
