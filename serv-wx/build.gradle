@@ -11,7 +11,7 @@ ext_facets['eclipse_facets_java'](this)
 ////////////////////////////////////////
 
 
-apply plugin: 'maven'
+apply plugin: 'maven-publish'
 ext_deploy['uploadArchivesSupport'](this)
 
 

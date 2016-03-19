@@ -1,32 +1,4 @@
-/*
-	gradle 主文件
-
-	部分内容参考： https://gist.github.com/dirkraft/8230302
-
- */
-
 import java.text.SimpleDateFormat
-import org.apache.tools.ant.taskdefs.condition.Os
-
-/**
- * 用于执行 grunt 任务
- *
- * 来自:
- * http://blog.crisp.se/2013/04/30/yassalsundman/test-driving-javascript-grunt-with-gradle
- */
-class GruntTask extends Exec {
-   private String gruntExecutable = Os.isFamily(Os.FAMILY_WINDOWS) ? "grunt.cmd" : "grunt"
-   def gruntArgs = ""
-
-   public GruntTask() {
-       super()
-       this.setExecutable(gruntExecutable)
-   }
-
-   public void setGruntArgs(String gruntArgs) {
-       this.args = "$gruntArgs".trim().split(" ") as List
-   }
-}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Settings
@@ -117,7 +89,7 @@ apply plugin: 'war'
 apply from: 'gradle/facet.gradle'
 
 
-apply plugin: 'maven'
+apply plugin: 'maven-publish'
 apply from: 'gradle/deploy.gradle'
 
 
@@ -174,14 +146,6 @@ subprojects { subproj ->
         archives jar
 		archives javadocJar
         archives sourcesJar
-    }
-
-    //
-    // 执行 grunt 编译 js/less 等
-    //
-    task grunt(type: GruntTask) {
-        gruntArgs = "default"
-        // commandLine 'grunt.cmd', 'default'
     }
 
     configurations {

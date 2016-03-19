@@ -1,94 +1,66 @@
 
 
-apply plugin: 'maven'
-
-	
-// uploadArchives结束自动调用仓库的脚本生成仓库索引
-task buildIndex(type:Exec) {
-	File path = new File("${rootProject.rootDir}/dist/.index/");
-	path.listFiles().each { f ->
-		if (f.getName().endsWith(".bat")) f.delete();
-	}
-	File newSh = new File(path, "buildIndex_" + new Date().getTime() + ".bat");
-	newSh.createNewFile();
-	//
-    def out = newSh.newPrintWriter() //  
-	//	out.write('#!/bin/bash')  
-	//	out.write('\n\n')  
-    out.write("cd ${rootProject.rootDir}/dist/.index/")  
-    out.write('\n')  
-    out.write('java -jar nexus-indexer-2.0.5-cli.jar -t full -i . -n . -r ../')  
-    out.write('\n')  
-    out.flush()  
-    out.close()
-	//
-	commandLine 'cmd', '/c', newSh.getAbsolutePath()
-	//
-	newSh.deleteOnExit();
-}
-
 	
 /**
  * 增加组件上传支持
  */
 def uploadArchivesSupport = { subproj ->
-
-    subproj.configurations {
-
-        deployerJars
-	}
 	
-	subproj.dependencies {
-		// 用于上传自己项目的jar 包到中心 maven 库
-		deployerJars "org.apache.maven.wagon:wagon-ssh:2.2"
-	}
+	// 检测是否为快照版本
+	def snapshot = (subproj.version.toLowerCase().indexOf("snapshot") != -1 )
 	
-	subproj.uploadArchives {
-		
-        repositories.mavenDeployer {
-            // beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+	// 创建构建仓库索引的脚本，每个仓库类型创建一个（snapshot/releast）,每次创建均尝试覆盖
+	task "maven_build_index_${snapshot}" (type:Exec, overwrite: true) {
+		def publishType = snapshot ? "snapshot" : "release"
+		File path = new File("${rootProject.rootDir}/dist/${publishType}/.index/");
+		path.listFiles().each { f ->
+			if (f.getName().endsWith(".bat")) f.delete();
+		}
+		File newSh = new File(path, "buildIndex" + ".bat");
+		newSh.getParentFile().mkdirs();
+		newSh.createNewFile();
+		//
+		def out = newSh.newPrintWriter() //  
+		//	out.write('#!/bin/bash')  
+		//	out.write('\n\n')  
+		out.write("cd ${rootProject.rootDir}/dist/${publishType}/.index/")  
+		out.write('\n')  
+		out.write("java -jar ${rootProject.rootDir}/libs/nexus-indexer-2.0.5-cli.jar -t full -i . -n . -r ../")  
+		out.write('\n')  
+		out.flush()  
+		out.close()
+		//
+		commandLine 'cmd', '/c', newSh.getAbsolutePath()
+		//
+		// newSh.deleteOnExit();
+	}
 
-			pom.groupId = (project_group + "." + project_name)
-			pom.artifactId = subproj.name
-			pom.version = subproj.version
-			
-            configuration = subproj.configurations.deployerJars
-            repository(
-                // 这儿需要注意，后面的地址是服务器地址，需要写全，是个大坑啊
-                // 另外初次执行的时候最好带上 --info 参数，会提示保存 ssh 验证信息的
-                // 这时候需要输入 yes
-                //
-                // 更详细说明参见我的 blog: http://my.oschina.net/someok/blog/374562
-                url: //"file://d:/Develop/MyProjects/repos/"
-                   // "scp://repos.example.com:22/home/maven/repos/release"
-					("file://" + new File(rootProject.rootDir, "dist").getAbsolutePath().replaceAll("\\\\", "\\/"))
-            )
+	subproj.publishing {
+		publications {
+			task "maven_publish_${subproj.name}_" (MavenPublication) {
+				groupId (project_group + "." + project_name)
+				artifactId subproj.name
+				version subproj.version
 
-			pom.project {
-				name pom.artifactId
-				packaging pom.groupId
-				description project_description
-				url "https://github.com/${github_org}/${project_name}"
-
-				scm {
-					url "https://github.com/${github_org}/${project_name}.git"
-					connection "scm:git:https://github.com/${github_org}/${project_name}.git"
-					developerConnection "scm:git:git@github.com:${github_org}/${project_name}.git"
-				}
-
-				licenses {
-					license {
-						name 'MIT License'
-						url 'http://www.apache.org/licenses/'
-						distribution 'repo'
-					}
+				from subproj.components.java
+				
+				pom.withXml {
+					asNode().appendNode('description', project_description)
+					asNode().appendNode('url', "https://github.com/${github_org}/${project_name}")
 				}
 			}
-			
-        }
-    }
-	subproj.uploadArchives.finalizedBy buildIndex
+		}
+		repositories {
+			def publishUrl = "file://" + new File(rootProject.rootDir, "dist").getAbsolutePath()
+					.replaceAll("\\\\", "\\/") + "/" + (snapshot ? "snapshot" : "release")
+			maven {
+				url (publishUrl)
+			}
+		}
+	}
 	
+	// 发布完成后，自动重建索引
+	subproj.publish.finalizedBy rootProject."maven_build_index_${snapshot}"
 	
 }
 
