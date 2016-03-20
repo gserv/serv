@@ -9,6 +9,11 @@ def uploadArchivesSupport = { subproj ->
 	// 检测是否为快照版本
 	def snapshot = (subproj.version.toLowerCase().indexOf("snapshot") != -1 )
 	
+	// 发布源代码
+	task "source_jar_${subproj.name}" (type: Jar, overwrite: true) {
+		from subproj.sourceSets.main.allJava
+	}
+	
 	// 创建构建仓库索引的脚本，每个仓库类型创建一个（snapshot/releast）,每次创建均尝试覆盖
 	task "maven_build_index_${snapshot}" (type:Exec, overwrite: true) {
 		def publishType = snapshot ? "snapshot" : "release"
@@ -43,6 +48,10 @@ def uploadArchivesSupport = { subproj ->
 				version subproj.version
 
 				from subproj.components.java
+
+				artifact rootProject."source_jar_${subproj.name}" {
+					classifier "sources"
+				}
 				
 				pom.withXml {
 					asNode().appendNode('description', project_description)
