@@ -3,9 +3,14 @@ package com.github.gserv.serv.commons.scan;
 import java.io.IOException;
 import java.lang.reflect.Modifier;
 
-import com.google.common.reflect.ClassPath;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
+import org.springframework.core.io.support.ResourcePatternResolver;
+import org.springframework.core.type.classreading.MetadataReader;
+import org.springframework.core.type.classreading.MetadataReaderFactory;
+import org.springframework.core.type.classreading.SimpleMetadataReaderFactory;
 
 /**
  * 类扫描器
@@ -14,6 +19,10 @@ import org.slf4j.LoggerFactory;
  */
 public class ClassScaner {
 	private static final Logger logger = LoggerFactory.getLogger(ClassScaner.class);
+
+	private ResourcePatternResolver resourcePatternResolver = new PathMatchingResourcePatternResolver();
+
+	private MetadataReaderFactory metadataReaderFactory = new SimpleMetadataReaderFactory();
 
     /**
      * 扫描回掉方法
@@ -37,27 +46,30 @@ public class ClassScaner {
     		Boolean instantiable, 
     		Class<T> parentClass
     		) throws IOException {
-        ClassPath classpath = ClassPath.from(ClassScaner.class.getClassLoader());
-        for (ClassPath.ClassInfo classInfo : classpath.getTopLevelClasses()) {
-		    if (classInfo.getName().startsWith(basePackage)) {			// 处理的根目录
+		String packageSearchPath = "classpath*:" + basePackage.replaceAll("\\.", "/") + "/**/*.class";
+		Resource[] resources = this.resourcePatternResolver.getResources(packageSearchPath);
+		for (Resource resource : resources) {
+			if (resource.isReadable()) {
 				try {
-					Class<?> target = classInfo.load();
+					MetadataReader metadataReader = metadataReaderFactory.getMetadataReader(resource);
+					Class target = this.getClass().getClassLoader().loadClass(metadataReader.getClassMetadata().getClassName());
 					// 可实例化属性不一致
 					if (instantiable != null && instantiable != (!target.isInterface() && !Modifier.isAbstract(target.getModifiers()))) {
-						logger.debug("[{}] 可实例化属性不同，跳过", classInfo.getName());
+						logger.debug("[{}] 可实例化属性不同，跳过", target);
 						continue;
 					}
 					// 继承关系不一致
 					if (parentClass != null && !parentClass.isAssignableFrom(target)) {
-						logger.debug("[{}] 继承关系不一致，跳过", classInfo.getName());
+						logger.debug("[{}] 继承关系不一致，跳过", target);
 						continue;
 					}
-					logger.debug("命中目标 [{}]", classInfo.getName());
+					logger.debug("命中目标 [{}]", target);
 					action.action((Class<T>) target);
+
 				} catch (Throwable e) {
-					logger.warn("[{}] 检查类异常：[{}]", classInfo.getName(), e.getMessage());
+					logger.warn("scan package, load resources faild. resources[" + resource + "], message : " + e.getMessage());
 				}
-		    }
+			}
 		}
     }
 

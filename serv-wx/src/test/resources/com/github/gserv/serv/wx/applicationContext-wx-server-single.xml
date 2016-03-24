@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans 
+  xmlns="http://www.springframework.org/schema/beans" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-2.0.xsd" >
+    
+    
+    <import resource="classpath*:serv/serv-springfactory.xml" />
+	<import resource="applicationContext-wx-answer.xml" />
+
+
+
+	<bean id="CacheLoader" class="com.github.gserv.serv.wx.support.cache.CacheLoader" ></bean>
+
+	<bean id="WxApiAccessTokenServiceLoader" class="com.github.gserv.serv.wx.support.api.accesstoken.WxApiAccessTokenServiceLoader" ></bean>
+
+	<bean id="WxStatisticsServiceLoader" class="com.github.gserv.serv.wx.support.api.statistics.WxStatisticsServiceLoader" ></bean>
+
+	<bean id="WxUserInfoServiceLoader" class="com.github.gserv.serv.wx.support.api.userinfo.WxUserInfoServiceLoader" ></bean>
+
+	<bean id="WxApiAuthenticationStateServiceLoader" class="com.github.gserv.serv.wx.support.api.authentication.WxApiAuthenticationStateServiceLoader" ></bean>
+
+	<bean id="WxMediaServiceLoader" class="com.github.gserv.serv.wx.support.api.media.WxMediaServiceLoader" ></bean>
+
+	<bean id="WxApiJsSdkConfServiceLoader" class="com.github.gserv.serv.wx.support.api.jssdk.WxApiJsSdkConfServiceLoader" ></bean>
+
+	<bean id="WxApiJsTicketServiceLoader" class="com.github.gserv.serv.wx.support.api.jssdk.WxApiJsTicketServiceLoader" ></bean>
+
+	<bean id="WxServiceMessagePushServiceLoader" class="com.github.gserv.serv.wx.support.api.service.WxServiceMessagePushServiceLoader" ></bean>
+
+	<bean id="WxQrCodeServiceLoader" class="com.github.gserv.serv.wx.support.api.qrcode.WxQrCodeServiceLoader" ></bean>
+
+
+	<bean id="wxServiceManager" class="com.github.gserv.serv.wx.service.manager.SimpleWxServiceManager" >
+		<property name="appId" value="wx5641c2474b7e5ab7" ></property>
+		<property name="appSecret" value="d0f06e3e128cba96f1f0b7240ac24200" ></property>
+		<property name="proxyAccessTokenUrl" value="http://123.139.154.144/wxapi_proxy/api/accessToken.do" ></property>
+		<property name="proxyAccessTokenAccessId" value="wx_test_shiying" ></property>
+		<property name="proxyAccessTokenAccessKey" value="test" ></property>
+		<property name="token" value="wxlzmtest20131006" ></property>
+	</bean>
+
+	<!-- 微信通知受理服务 -->
+	<bean id="noticeAcceptService" class="com.github.gserv.serv.wx.service.accept.NoticeAcceptService" >
+		<property name="wxServiceManager" ref="wxServiceManager" ></property>
+		<property name="wxMessageHandler" ref="wxMessageHandlerChain" ></property>
+	</bean>
+
+
+	<!-- 微信通知入口控制器 -->
+	<bean id="wxNoticeController" class="com.github.gserv.serv.wx.controller.WxNoticeController" >
+		<property name="noticeAcceptService" ref="noticeAcceptService" ></property>
+	</bean>
+
+
+	<!-- 入口HTTP配置
+		sign = MD5("_" + accessid)
+		http://1.80.205.140/sxUnicomElect/serv/wx/notice.do?accessid=wx5641c2474b7e5ab7&sign=8ef460165dd2e6d9cd14f856b952c7aa
+	-->
+	<bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping" >
+	    <property name="mappings" >
+	        <value>
+	            /serv/wx/notice.do=wxNoticeController
+	            <!--
+	            /serv/wx/jssdk.do=wxJsSdkSupportController
+	            /serv/wx/oauth.do=wxOauthProxyController
+	            /serv/wx/oauthdemo.do=wxOauthDemoController
+	             -->
+	        </value>
+	    </property>
+	</bean>
+	
+	
+	
+	
+	
+	
+</beans>
+
+
+
+
+
+
+
+
+
+

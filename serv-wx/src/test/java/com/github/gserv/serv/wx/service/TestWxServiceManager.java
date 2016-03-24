@@ -2,6 +2,7 @@ package com.github.gserv.serv.wx.service;
 
 import javax.annotation.Resource;
 
+import com.github.gserv.serv.commons.JsonUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -12,7 +13,7 @@ import com.github.gserv.serv.wx.support.WxApiInvorkException;
 import com.github.gserv.serv.wx.support.api.accesstoken.WxApiAccessTokenService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"/serv/applicationContext-wx-server.xml", "/serv/applicationContext-springfactory.xml"})
+@ContextConfiguration(locations = "/com/github/gserv/serv/wx/applicationContext-wx-server-single.xml")
 public class TestWxServiceManager {
 	
 	@Resource
@@ -20,8 +21,7 @@ public class TestWxServiceManager {
 	
 	@Test
 	public void test() throws WxApiInvorkException {
-		String accessToken = wxServiceManager.getWxService(WxApiAccessTokenService.class).accessToken();
-		System.out.println(accessToken);
+		System.out.println(JsonUtils.toJson(wxServiceManager));
 	}
 
 }

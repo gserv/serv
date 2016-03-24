@@ -16,7 +16,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.github.gserv.serv.commons.JsonUtils;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "/serv/_applicationContext-wx-server-single.xml")
+@ContextConfiguration(locations = "/com/github/gserv/serv/wx/applicationContext-wx-server-single.xml")
 public class TestWxStatisticsService {
 	
 	@Resource

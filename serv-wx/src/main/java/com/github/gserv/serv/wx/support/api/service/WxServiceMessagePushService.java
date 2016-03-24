@@ -72,7 +72,7 @@ public class WxServiceMessagePushService implements WxService {
 		if (res == null) {
 			throw new WxApiInvorkException("invork http request is null");
 		}
-		if (res.get("errcode") == null || !res.get("errcode").equals("0")) {
+		if (res.get("errcode") == null || !res.get("errcode").equals(0)) {
 			throw new WxApiInvorkException("invork weixin service api faild. response["+res+"]");
 		}
 		logger.info("push weixin service message success. message [{}]", messageBody);

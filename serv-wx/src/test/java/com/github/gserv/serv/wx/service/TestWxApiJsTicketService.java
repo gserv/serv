@@ -2,6 +2,7 @@ package com.github.gserv.serv.wx.service;
 
 import javax.annotation.Resource;
 
+import com.github.gserv.serv.wx.service.manager.WxServiceManager;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -12,14 +13,18 @@ import com.github.gserv.serv.wx.support.api.jssdk.WxApiJsTicketService;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath:serv/applicationContext-wx.xml")
+@ContextConfiguration(locations = "/com/github/gserv/serv/wx/applicationContext-wx-server-single.xml")
 public class TestWxApiJsTicketService {
 	
-	@Resource
+//	@Resource
 	private WxApiJsTicketService wxApiJsTicketService;
+
+	@Resource
+	private WxServiceManager wxServiceManager;
 	
 	@Test
 	public void test() throws WxApiInvorkException {
+		wxApiJsTicketService = wxServiceManager.getWxService(WxApiJsTicketService.class);
 		System.out.println(wxApiJsTicketService.jsTicket());
 		System.out.println(wxApiJsTicketService.jsTicket());
 	}

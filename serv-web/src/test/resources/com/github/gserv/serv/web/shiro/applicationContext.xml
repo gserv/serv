@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd" >
+       
+       
+ <!--  
+ 	WEB.XML
+ 
+ 	<filter> 
+		<filter-name>shiroFilter</filter-name> 
+		<filter-class> 
+			org.springframework.web.filter.DelegatingFilterProxy 
+		</filter-class> 
+        <init-param>  
+             <param-name>targetFilterLifecycle</param-name>  
+             <param-value>true</param-value>  
+        </init-param>  
+	</filter> 
+	<filter-mapping> 
+		<filter-name>shiroFilter</filter-name> 
+		<url-pattern>/*</url-pattern> 
+	</filter-mapping>
+ 
+  -->
+    
+	
+       
+	
+	<!-- 用来演示的数据，实际应用中可以自己实现ShiroUserInter接口，从数据库读取 -->
+    <bean id="shiroUserInter" class="com.github.gserv.serv.web.shiro.user.simple.ShiroUserInterSimple" >
+    	<property name="data" >
+    		<util:list>
+    			<bean class="com.github.gserv.serv.web.shiro.user.simple.ShiroUserSimple" >
+    				<property name="loginUsername" value="admin" ></property>
+    				<property name="loginPasswordHash" value="e30c09f9e2d5633c6e50d1baf416517a" ></property>
+    				<property name="loginSalt" value="a0ef49336ca3212712556a3f67834547" ></property>
+    				<property name="stateDisabled" value="false" ></property>
+    				<property name="stringPermission" >
+    					<util:list>
+    						<value>perm_admin</value>
+    						<value>perm_manager</value>
+    					</util:list>
+    				</property>
+    				<property name="roles" >
+    					<util:list></util:list>
+    				</property>
+    			</bean>
+    		</util:list>
+    	</property>
+    </bean>
+    
+	
+    
+    <!-- 凭证匹配器 -->
+    <bean id="credentialsMatcher" class="com.github.gserv.serv.web.shiro.service.RetryLimitHashedCredentialsMatcher" >
+        <property name="hashAlgorithmName" value="md5" />
+        <property name="hashIterations" value="2" />
+        <property name="storedCredentialsHexEncoded" value="true" />
+    </bean>
+	
+    <!-- Realm实现 -->
+    <bean id="userRealm" class="com.github.gserv.serv.web.shiro.service.ServShiroUserRealm" >
+        <property name="credentialsMatcher" ref="credentialsMatcher" />
+        <property name="cachingEnabled" value="true" />
+        <property name="authenticationCachingEnabled" value="true" />
+        <property name="authenticationCacheName" value="authenticationCache" />
+        <property name="authorizationCachingEnabled" value="true"/>
+        <property name="authorizationCacheName" value="authorizationCache" />
+        <property name="shiroUserInter" ref="shiroUserInter" ></property>
+    </bean>
+	
+    <!-- 会话ID生成器 -->
+    <bean id="sessionIdGenerator" class="org.apache.shiro.session.mgt.eis.JavaUuidSessionIdGenerator"/>
+	
+    <!-- 会话Cookie模板 -->
+    <bean id="sessionIdCookie" class="org.apache.shiro.web.servlet.SimpleCookie">
+        <constructor-arg value="sid"/>
+        <property name="httpOnly" value="false" />
+        <property name="maxAge" value="180000"/>
+    </bean>
+
+    <!-- 会话DAO -->
+    <bean id="sessionDAO" class="org.apache.shiro.session.mgt.eis.EnterpriseCacheSessionDAO">
+        <property name="activeSessionsCacheName" value="shiro-activeSessionCache" />
+        <property name="sessionIdGenerator" ref="sessionIdGenerator"/>
+    </bean>
+
+    <!-- 会话验证调度器 -->
+    <bean id="sessionValidationScheduler" class="org.apache.shiro.session.mgt.quartz.QuartzSessionValidationScheduler">
+        <property name="sessionValidationInterval" value="1800000"/>
+        <property name="sessionManager" ref="sessionManager"/>
+    </bean>
+
+    <!-- 会话管理器 -->
+    <bean id="sessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
+        <property name="globalSessionTimeout" value="1800000"/>
+        <property name="deleteInvalidSessions" value="true"/>
+        <property name="sessionValidationSchedulerEnabled" value="true"/>
+        <property name="sessionValidationScheduler" ref="sessionValidationScheduler"/>
+        <property name="sessionDAO" ref="sessionDAO"/>
+        <property name="sessionIdCookieEnabled" value="true"/>
+        <property name="sessionIdCookie" ref="sessionIdCookie"/>
+    </bean>
+
+    <!-- 安全管理器 -->
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <property name="realm" ref="userRealm"/>
+        <property name="sessionManager" ref="sessionManager"/>
+    </bean>
+
+    <!-- 相当于调用SecurityUtils.setSecurityManager(securityManager) -->
+    <bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+        <property name="staticMethod" value="org.apache.shiro.SecurityUtils.setSecurityManager"/>
+        <property name="arguments" ref="securityManager"/>
+    </bean>
+    
+    
+    <!-- 自定义过滤器 -->
+    <bean id="permsOrFilter" class="com.github.gserv.serv.web.shiro.filter.CustomPermsAuthorizationFilter" ></bean>
+    
+
+    <!-- Shiro的Web过滤器 -->
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean" depends-on="permsOrFilter" >
+        <property name="securityManager" ref="securityManager" />
+        <property name="loginUrl" value="/manager/login/index.do" />
+        <property name="unauthorizedUrl" value="/manager/login/unauthorized.do" />
+	    <property name="filters">  
+	        <util:map>
+	        	<entry key="permsOr" value-ref="permsOrFilter" ></entry>
+	        </util:map>  
+	    </property>  
+	    <!-- shiro连接约束配置,在这里使用自定义的动态获取资源类 -->  
+	    <property name="filterChainDefinitionMap" >
+	    	<bean class="com.github.gserv.serv.web.shiro.service.ChainDefinitionSectionMetaSource" >
+		        <property name="filterChainDefinitions" >
+		            <value>
+						/*=anon 
+		            	/resources/**=anon
+		            	/open/**=anon
+		            	/manager/login/**=anon
+		            	/manager/**=permsOr[perm_admin, perm_manager]
+		            </value>
+		        </property>
+	    	</bean>
+	    </property>
+    </bean>
+    
+    
+    <!-- 过滤器交由过滤器代理加载 -->
+    <bean class="com.github.gserv.serv.web.filter.FilterProxyWrap" >
+    	<property name="filter" ref="shiroFilter" ></property>
+    </bean>
+    
+    
+
+    <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
+    
+    
+    
+    
+		
+	<bean id="shiroLogoutController" class="com.github.gserv.serv.web.shiro.controller.ShiroLogoutController" ></bean>
+	
+	<bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping" >  
+	    <property name="mappings" >
+	        <value>
+	            /serv/shiro/logout.do=shiroLogoutController
+	        </value>
+	    </property>
+	</bean>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+	
+</beans>
+
+
+

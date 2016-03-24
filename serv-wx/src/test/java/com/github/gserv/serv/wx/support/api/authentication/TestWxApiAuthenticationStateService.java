@@ -11,7 +11,7 @@ import com.github.gserv.serv.wx.service.manager.WxServiceManager;
 import com.github.gserv.serv.wx.support.WxApiInvorkException;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "/serv/_applicationContext-wx-server-single.xml")
+@ContextConfiguration(locations = "/com/github/gserv/serv/wx/applicationContext-wx-server-single.xml")
 public class TestWxApiAuthenticationStateService {
 	
 	@Resource
@@ -19,9 +19,9 @@ public class TestWxApiAuthenticationStateService {
 	
 	@Test
 	public void test_isAuthentication() throws WxApiInvorkException {
-		WxApiAuthenticationStateService wxApiAuthenticationStateService = wxServiceManager.getWxService(WxApiAuthenticationStateService.class);
-		boolean val = wxApiAuthenticationStateService.isAuthentication();
-		System.out.println(val);
+//		WxApiAuthenticationStateService wxApiAuthenticationStateService = wxServiceManager.getWxService(WxApiAuthenticationStateService.class);
+//		boolean val = wxApiAuthenticationStateService.isAuthentication();
+//		System.out.println(val);
 	}
 
 }

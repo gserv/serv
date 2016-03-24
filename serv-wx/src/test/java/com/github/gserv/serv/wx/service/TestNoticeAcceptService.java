@@ -12,7 +12,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.github.gserv.serv.wx.support.MessageHandlerException;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "/applicationContext-test.xml")
+@ContextConfiguration(locations = "/com/github/gserv/serv/wx/applicationContext-wx-server-single.xml")
 public class TestNoticeAcceptService {
 	
 	@Resource
@@ -34,6 +34,20 @@ public class TestNoticeAcceptService {
 				+ "<SentCount>75</SentCount><ErrorCount>5</ErrorCount></xml>");
 		String resbody = noticeAcceptService.accept(noticeAcceptContext);
 		System.out.println(resbody);
+		//
+
+		NoticeAcceptContext noticeAcceptContext3 = new NoticeAcceptContext();
+		noticeAcceptContext3.setAccessid("wx5641c2474b7e5ab7");
+		noticeAcceptContext3.setSign("8ef460165dd2e6d9cd14f856b952c7aa");
+		noticeAcceptContext3.setReqbody(
+				"<xml><ToUserName><![CDATA[gh_3e8adccde292]]></ToUserName>"
+						+ "<FromUserName><![CDATA[oR5Gjjl_eiZoUpGozMo7dbBJ362A]]></FromUserName>"
+						+ "<CreateTime>1394524296</CreateTime>"
+						+ "<MsgType><![CDATA[text]]></MsgType>"
+						+ "<Content><![CDATA[hello]]></Content>"
+						+ "<MsgID>1989</MsgID></xml>");
+		String resbody2 = noticeAcceptService.accept(noticeAcceptContext3);
+		System.out.println(resbody2);
 	}
 
 }

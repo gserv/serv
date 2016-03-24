@@ -10,7 +10,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.github.gserv.serv.commons.JsonUtils;
-import com.github.gserv.serv.commons.encry.HashUtils;
 import com.github.gserv.serv.wx.message.revc.AbstractRevcMessage;
 import com.github.gserv.serv.wx.message.send.AbstractSendMessage;
 import com.github.gserv.serv.wx.service.manager.WxServiceManager;
@@ -45,43 +44,30 @@ public class NoticeAcceptService {
 	
 	/**
 	 * 获取服务管理器
-	 * @param accessid
-	 * @param sign
 	 * @return
 	 */
 	private WxServiceManager getWxServiceManager(NoticeAcceptContext noticeAcceptContext) {
-		if (noticeAcceptContext.getAccessid() == null) {
-			if (wxServiceManager == null) {
-				return null;
-			} else {
-				return wxServiceManager;
-			}
+		if (wxServiceManager != null) {
+			return wxServiceManager;
+		} else if (wxServiceMultipleManager == null || noticeAcceptContext.getAccessid() == null) {
+			return null;
 		} else {
-			if (wxServiceMultipleManager == null) {
-				return null;
-			} else {
-				String _sign = HashUtils.md5("_" + noticeAcceptContext.getAccessid());
-				if (!_sign.equalsIgnoreCase(noticeAcceptContext.getSign())) {
-					logger.warn("sign checked faild. sign[{}], expectation[{}]", noticeAcceptContext.getSign(), _sign);
-					return null;
-				}
-				return wxServiceMultipleManager.getWxServiceManager(noticeAcceptContext.getAccessid());
-			}
+			return wxServiceMultipleManager.getWxServiceManager(noticeAcceptContext.getAccessid());
 		}
 	}
 	
 	
 	/**
 	 * 微信通知消息受理
-	 * 
-	 * 
-	 * @param accessid 系统的接入ID，通过该ID查找访问的微信配置
-	 * @param sign 接入ID签名，用来验证accessid的有效性
-	 * @param signature 签名（微信接入验证）
-	 * @param timestamp 时间戳（微信接入验证）
-	 * @param nonce 随机数（微信接入验证）
-	 * @param echostr 唯一字符串（微信接入验证）
-	 * @param resbody 接收内容
+	 *
+	 *  accessid 系统的接入ID，通过该ID查找访问的微信配置
+	 *  sign 接入ID签名，用来验证accessid的有效性
+	 *  signature 签名（微信接入验证）
+	 *  timestamp 时间戳（微信接入验证）
+	 *  nonce 随机数（微信接入验证）
+	 *  echostr 唯一字符串（微信接入验证）
+	 *  resbody 接收内容
+	 *
 	 * @return
 	 * @throws MessageHandlerException
 	 */
@@ -90,7 +76,7 @@ public class NoticeAcceptService {
 		// 获取服务管理器
 		WxServiceManager wxServiceManager = getWxServiceManager(noticeAcceptContext);
 		if (wxServiceManager == null) {
-			throw new MessageHandlerException("not found weixin service message, accessid["
+			throw new MessageHandlerException("not found weixin service manager, accessid["
 					+noticeAcceptContext.getAccessid()+"], sign["+noticeAcceptContext.getSign()+"]");
 		}
 		// 

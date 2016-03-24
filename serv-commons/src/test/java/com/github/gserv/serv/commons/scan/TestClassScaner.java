@@ -16,6 +16,24 @@ public class TestClassScaner {
      * @throws IOException
      */
     @Test
+    public void test_scan_class_by_jar() throws IOException {
+        new ClassScaner().scan("org.springframework.test", new ClassScaner.ClassScanerAction<Object>() {
+            @Override
+            public void action(Class<Object> cls) {
+                try {
+                    Assert.assertFalse(cls.isInterface());
+                } catch (Throwable e ) {
+                    e.printStackTrace();
+                }
+            }
+        }, true, null);
+    }
+
+    /**
+     * 类扫描测试
+     * @throws IOException
+     */
+    @Test
     public void test_scan_class() throws IOException {
         new ClassScaner().scan("com.github", new ClassScaner.ClassScanerAction<Object>() {
             @Override

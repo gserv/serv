@@ -1,5 +1,7 @@
 package com.github.gserv.serv.commons.mail;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -29,29 +31,22 @@ public class TestEmailService {
 	
 	@Test
 	public void test() {
-		emailService.sendMessage("350106052@qq.com", "测试邮件", "testMail", new EmailNoticeAction() {
-
-			@SuppressWarnings({ "unchecked", "rawtypes" })
-			@Override
-			public void setData(Map model) {
-				model.put("name", "名称");
-				model.put("sendMsg", "ccccccccccc");
-			}
-
-			@Override
-			public void setAttachment(MimeMessageHelper helper) throws MessagingException {
-				ClassPathResource res = new ClassPathResource("com/github/gserv/serv/commons/mail/tmpl/testMail_logo.jpg");
-				helper.addInline("identifier_logo", res);
-			}
-		});
-
-
+//		emailService.sendMessage("350106052@qq.com", "serv 测试单元：" + new SimpleDateFormat("yyyyMMddHHmmss").format(new Date()), "testMail", new EmailNoticeAction() {
 //
-//		EmailService es = new EmailService();
-//		System.out.println(es);
+//			@SuppressWarnings({ "unchecked", "rawtypes" })
+//			@Override
+//			public void setData(Map model) {
+//				model.put("name", "名称");
+//				model.put("sendMsg", "ccccccccccc");
+//			}
 //
-//		org.springframework.mail.javamail.JavaMailSenderImpl s = new org.springframework.mail.javamail.JavaMailSenderImpl();
-//		es.setMailSender(s);
+//			@Override
+//			public void setAttachment(MimeMessageHelper helper) throws MessagingException {
+//				ClassPathResource res = new ClassPathResource("com/github/gserv/serv/commons/mail/tmpl/testMail_logo.jpg");
+//				helper.addInline("identifier_logo", res);
+//			}
+//		});
+
 	}
 
 }
