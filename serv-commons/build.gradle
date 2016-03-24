@@ -27,6 +27,9 @@ dependencies {
 			libraries.'spring-webmvc',
 			libraries.'mail',
 			libraries.'freemarker',
+			
+			// class scan
+			libraries.'guava',
 
 			// export
 			libraries.'poi',
@@ -35,6 +38,7 @@ dependencies {
 	)
 
 	runtime (
+			
 			libraries."servlet-api"
 	)
 }

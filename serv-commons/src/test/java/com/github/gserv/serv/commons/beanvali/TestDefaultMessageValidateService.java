@@ -34,7 +34,7 @@ public class TestDefaultMessageValidateService {
         System.out.println(valid.validate("[chi.cc=aa]", obj));
 
         //
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         System.out.println(valid.validate("[chi.cc?=a(.*?)]", obj, context));
         System.out.println(context);
     }

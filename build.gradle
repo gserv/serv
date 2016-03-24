@@ -10,7 +10,7 @@ ext {
     // project_version = '0.0.1-SNAPSHOT'
     project_description = 'micro service project attempt.'
 
-    project_jdk = '1.7'
+    project_jdk = '1.6'
     project_web = '2.5'
 	
 	
@@ -195,6 +195,7 @@ subprojects { subproj ->
         testCompile (
             libraries.'junit',
             libraries.'spring-test',
+			libraries.'annotation-api',
         )
 
         runtime (
