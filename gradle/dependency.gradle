@@ -12,7 +12,7 @@ ext.versions = [
 ext.libraries = [
 	
 	// servlet base
-	"servlet-api": "javax.servlet:servlet-api:2.3",
+	"servlet-api": "javax.servlet:javax.servlet-api:3.0.1",
 	"jsp-api": "javax.servlet:jsp-api:2.0",
 	"jstl": "javax.servlet:jstl:1.2",
 	"standard": "taglibs:standard:1.1.2",
