@@ -43,8 +43,6 @@ public class WxApiAccessTokenServiceLoader implements WxServiceLoader<WxApiAcces
 			return wxApiAccessTokenProxyService;
 		} else {
 			WxApiAccessTokenDefaultService wxApiAccessTokenDefaultService = new WxApiAccessTokenDefaultService();
-			wxApiAccessTokenDefaultService.setAppid(wxServiceManager.getAppId());
-			wxApiAccessTokenDefaultService.setSecret(wxServiceManager.getAppSecret());
 			wxApiAccessTokenDefaultService.setWxServiceManager(wxServiceManager);
 			if (apiurl != null) {
 				wxApiAccessTokenDefaultService.setApiurl(apiurl);

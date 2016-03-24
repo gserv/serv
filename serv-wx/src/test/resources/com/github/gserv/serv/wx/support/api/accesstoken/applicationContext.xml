@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <import resource="classpath:serv/serv-springfactory.xml" />
+
+    <bean id="CacheLoader" class="com.github.gserv.serv.wx.support.cache.CacheLoader" ></bean>
+    <bean id="WxApiAccessTokenServiceLoader" class="com.github.gserv.serv.wx.support.api.accesstoken.WxApiAccessTokenServiceLoader" ></bean>
+
+
+    <bean id="wxServiceManager" class="com.github.gserv.serv.wx.service.manager.SimpleWxServiceManager" >
+        <property name="appId" value="wx5641c2474b7e5ab7" ></property>
+        <property name="appSecret" value="d0f06e3e128cba96f1f0b7240ac24200" ></property>
+        <property name="token" value="wxlzmtest20131006" ></property>
+    </bean>
+
+
+</beans>
