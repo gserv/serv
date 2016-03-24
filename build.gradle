@@ -219,7 +219,7 @@ subprojects { subproj ->
 // Misc
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '2.3'
+    gradleVersion = '2.12-rc-1'
 }
 
 // 在idea 的 module 中忽略 projects 目录
