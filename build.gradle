@@ -26,23 +26,23 @@ ext {
 			try {
 				def git_cmd = "git rev-parse HEAD"
 				def git_proc = git_cmd.execute()
+
+				attributes 'SCM-Revision': git_proc.text.trim()
+
+				attributes 'Built-By': System.properties['user.name']
+				attributes 'Created-By': System.properties['java.version'] + " (" + System.properties['java.vendor'] + " " + System.getProperty("java.vm.version") + ")"
+				attributes 'Build-Host': InetAddress.localHost.hostName
+				attributes 'Build-Date': buildDate
+				attributes 'Build-Time': buildTime
+				attributes 'Timestamp': String.valueOf(System.currentTimeMillis())
+				attributes 'Specification-Title': proj.archivesBaseName
+				attributes 'Specification-Version': proj.version
+				attributes 'Specification-Vendor': project_group
+				attributes 'Implementation-Title': proj.archivesBaseName
+				attributes 'Implementation-Version': proj.version
+				attributes 'Implementation-Vendor': project_group
+				attributes 'provider': 'gradle'
 			} catch (Exception e) {}
-
-            attributes 'SCM-Revision': git_proc.text.trim()
-
-            attributes 'Built-By': System.properties['user.name']
-            attributes 'Created-By': System.properties['java.version'] + " (" + System.properties['java.vendor'] + " " + System.getProperty("java.vm.version") + ")"
-            attributes 'Build-Host': InetAddress.localHost.hostName
-            attributes 'Build-Date': buildDate
-            attributes 'Build-Time': buildTime
-            attributes 'Timestamp': String.valueOf(System.currentTimeMillis())
-            attributes 'Specification-Title': proj.archivesBaseName
-            attributes 'Specification-Version': proj.version
-            attributes 'Specification-Vendor': project_group
-            attributes 'Implementation-Title': proj.archivesBaseName
-            attributes 'Implementation-Version': proj.version
-            attributes 'Implementation-Vendor': project_group
-            attributes 'provider': 'gradle'
         }
     }
 

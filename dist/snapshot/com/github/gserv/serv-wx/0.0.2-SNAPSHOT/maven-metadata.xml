@@ -2,11 +2,12 @@
 <metadata>
   <groupId>com.github.gserv</groupId>
   <artifactId>serv-wx</artifactId>
+  <version>0.0.2-SNAPSHOT</version>
   <versioning>
-    <versions>
-      <version>0.0.1-SNAPSHOT</version>
-      <version>0.0.2-SNAPSHOT</version>
-    </versions>
+    <snapshot>
+      <timestamp>20160324.073329</timestamp>
+      <buildNumber>1</buildNumber>
+    </snapshot>
     <lastUpdated>20160324073329</lastUpdated>
   </versioning>
 </metadata>
