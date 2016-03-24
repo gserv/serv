@@ -1,4 +1,7 @@
+[![Build Status](https://travis-ci.org/gserv/serv.png)](https://travis-ci.org/gserv/serv)
+
 # serv服务组件
+
 
 在线文档：https://github.com/gserv/serv/wiki		
 
