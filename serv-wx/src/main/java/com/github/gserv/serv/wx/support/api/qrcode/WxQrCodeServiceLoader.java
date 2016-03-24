@@ -17,4 +17,11 @@ public class WxQrCodeServiceLoader implements WxServiceLoader<WxQrCodeService> {
 		return wxQrCodeService;
 	}
 
+	public WxQrCodeService getWxQrCodeService() {
+		return wxQrCodeService;
+	}
+
+	public void setWxQrCodeService(WxQrCodeService wxQrCodeService) {
+		this.wxQrCodeService = wxQrCodeService;
+	}
 }

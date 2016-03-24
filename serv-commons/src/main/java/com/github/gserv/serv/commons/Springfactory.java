@@ -26,9 +26,9 @@ public class Springfactory implements BeanFactoryAware {
 	 */
 	public static <T> T getBean(Class<T> t) {
 		if (null != beanFactory) {
-			logger.warn("try get a spring bean by springfactory, but beanFactory is null, maybe not config Springfactory to applicationContext.");
 			return (T) beanFactory.getBean(t);
 		}
+		logger.warn("try get a spring bean by springfactory, but beanFactory is null, maybe not config Springfactory to applicationContext.");
 		return null;
 	}
 
