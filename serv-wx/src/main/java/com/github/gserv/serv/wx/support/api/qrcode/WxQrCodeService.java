@@ -92,7 +92,7 @@ public class WxQrCodeService implements WxService {
 			if (type == QrCodeType.QR_SCENE) {
 				data.put("expire_seconds", 604800);
 			}
-			data.put("action_name", "QR_SCENE");
+			data.put("action_name", type);
 			data.put("action_info", new HashMap<String, Object>());
 			((Map<String, Object>) data.get("action_info")).put("scene", new HashMap<String, Object>());
 			if (scene_id instanceof Integer) {
