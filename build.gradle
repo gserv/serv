@@ -23,8 +23,10 @@ ext {
             def buildDate = new SimpleDateFormat('yyyy-MM-dd').format(buildTimeAndDate)
             def buildTime = new SimpleDateFormat('HH:mm').format(buildTimeAndDate)
 
-            def git_cmd = "git rev-parse HEAD"
-            def git_proc = git_cmd.execute()
+			try {
+				def git_cmd = "git rev-parse HEAD"
+				def git_proc = git_cmd.execute()
+			} catch (Exception e) {}
 
             attributes 'SCM-Revision': git_proc.text.trim()
 
@@ -232,14 +234,6 @@ task wrapper(type: Wrapper) {
 gradle.projectsEvaluated {
     gradle.rootProject {
         ideaModule.enabled = false
-        idea {
-            project {
-                // modules = subprojects*.idea.module
-                // 如果某个子项目的 ideaModule 设置为 false，则不会在 idea 中生成 module
-                def modulesToInclude = subprojects.findAll {it.ideaModule.enabled == true}
-                modules = modulesToInclude.idea.module
-            }
-        }
     }
 }
 
